@@ -36,6 +36,7 @@ PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   net.davidotek.pupgui2
   io.github.antimicrox.antimicrox
   com.rafaelmardojai.Blanket
+  org.signal.Signal
 )
 
 #--------------Validações-------------#
@@ -88,7 +89,7 @@ instalar_flatpak () {
   for programa in ${PROGRAMAS_PARA_INSTALAR_FLATPAK[@]}; do
     if ! flatpak list | grep -q $programa; then
       echo -e "${VERDE}[INFO] - Instalando $programa...${SEM_COR}"
-      sudo flatpak install flathub $programa &> /dev/null
+      flatpak install flathub $programa -y
     else
       echo -e "${VERDE}[INFO] - O pacote $programa já está instalado.${SEM_COR}"
     fi
