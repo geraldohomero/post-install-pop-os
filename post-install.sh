@@ -2,7 +2,7 @@
 VERMELHO='\e[1;91m'
 VERDE='\e[1;92m'
 SEM_COR='\e[0m'
-#----#
+#------------------------#
 DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/programas"
 PROGRAMAS_PARA_INSTALAR_DEB=(
   https://protonvpn.com/download/protonvpn-stable-release_1.0.1-1_all.deb
@@ -32,6 +32,8 @@ PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   org.gnome.Characters
   com.github.tchx84.Flatseal
 )
+
+#--------------Validações-------------#
 # Internet?
 if ! ping -c 1 8.8.8.8 -q &> /dev/null; then
   echo -e "${VERMELHO}[ERROR] - Seu computador não tem conexão com a Internet.${SEM_COR}"
@@ -40,9 +42,19 @@ else
   echo -e "${VERDE}[INFO] - Conexão com a Internet verificada.${SEM_COR}"
 fi
 
+# wget está instalado?
+if [[ ! -x $(which wget) ]]; then
+  echo -e "${VERMELHO}[ERRO] - O programa wget não está instalado.${SEM_COR}"
+  echo -e "${VERDE}[INFO] - Instalando wget...${SEM_COR}"
+  sudo apt install wget -y &> /dev/null
+else
+  echo -e "${VERDE}[INFO] - O programa wget já está instalado.${SEM_COR}"
+fi
+
+# Updates e upgrades
 upgrade_limpeza () {
   echo -e "${VERDE}[INFO] - Fazendo upgrade e limpeza...${SEM_COR}"
-  sleep 2
+  sleep 1
   sudo apt autoclean
   sudo apt clean
   sudo apt update -m
@@ -51,11 +63,9 @@ upgrade_limpeza () {
   sudo apt full-upgrade
   sudo apt autoremove -y 
   sudo flatpak update
-  #atualiza flatpaks
 }  
 
 #instalando pacotes e programas
-
 instalar_pacotes_apt () {
   for programa in ${PROGRAMAS_PARA_INSTALAR_APT[@]}; do
     if ! dpkg -l | grep -q $programa; then
@@ -71,7 +81,7 @@ instalar_pacotes_apt () {
 instalar_flatpak () {
   for programa in ${PROGRAMAS_PARA_INSTALAR_FLATPAK[@]}; do
     if ! flatpak list | grep -q $programa; then
-      echo -e "${VERDE}[INFO] - Instalando o $programa...${SEM_COR}"
+      echo -e "${VERDE}[INFO] - Instalando $programa...${SEM_COR}"
       sudo flatpak install flathub $programa &> /dev/null
     else
       echo -e "${VERDE}[INFO] - O pacote $programa já está instalado.${SEM_COR}"
@@ -86,7 +96,7 @@ baixar_pacotes_debs () {
     if ! dpkg -l | grep -iq $url_extraida; then
       echo -e "${VERDE}[INFO] - Baixando o arquivo $url_extraida...${SEM_COR}"
       wget -c "$url" -P "$DIRETORIO_DOWNLOAD_PROGRAMAS" &> /dev/null
-      echo -e "${VERDE}[INFO] - Instalando o $url_extraida...${SEM_COR}"
+      echo -e "${VERDE}[INFO] - Instalando $url_extraida...${SEM_COR}"
       sudo dpkg -i $DIRETORIO_DOWNLOAD_PROGRAMAS/${url##*/} &> /dev/null
       echo -e "${VERDE}[INFO] - Instalando dependências...${SEM_COR}"
       sudo apt -f install -y &> /dev/null
