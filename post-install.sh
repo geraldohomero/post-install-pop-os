@@ -2,7 +2,7 @@
 VERMELHO='\e[1;91m'
 VERDE='\e[1;92m'
 SEM_COR='\e[0m'
-#------------------------#
+#-----------https://github.com/geraldohomero/-------------#
 DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/Programas"
 PROGRAMAS_PARA_INSTALAR_DEB=(
   https://protonvpn.com/download/protonvpn-stable-release_1.0.1-1_all.deb
