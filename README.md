@@ -1,1 +1,1 @@
-# post-install-pop-os.sh
+# Post Install shellscript for Pop!_OS
