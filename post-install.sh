@@ -9,6 +9,7 @@ PROGRAMAS_PARA_INSTALAR_DEB=(
   https://iriun.gitlab.io/iriunwebcam-2.6.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/nautilus-megasync-xUbuntu_22.04_amd64.deb
+  https://ocean.surfshark.com/debian/pool/main/s/surfshark-release/surfshark-release_1.0.0-2_amd64.deb
 )
 PROGRAMAS_PARA_INSTALAR_APT=(
   htop
@@ -17,6 +18,7 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   libreoffice-java-common
   virtualbox
   lutris
+  codium
 )
 PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   com.bitwarden.desktop
@@ -31,6 +33,9 @@ PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   org.freeplane.App
   org.gnome.Characters
   com.github.tchx84.Flatseal
+  net.davidotek.pupgui2
+  io.github.antimicrox.antimicrox
+  com.rafaelmardojai.Blanket
 )
 
 #--------------Validações-------------#
