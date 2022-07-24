@@ -3,7 +3,7 @@ VERMELHO='\e[1;91m'
 VERDE='\e[1;92m'
 SEM_COR='\e[0m'
 #------------------------#
-DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/programas"
+DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/Programas"
 PROGRAMAS_PARA_INSTALAR_DEB=(
   https://protonvpn.com/download/protonvpn-stable-release_1.0.1-1_all.deb
   https://iriun.gitlab.io/iriunwebcam-2.6.deb
@@ -66,6 +66,7 @@ upgrade_limpeza () {
 }  
 
 #instalando pacotes e programas
+
 instalar_pacotes_apt () {
   for programa in ${PROGRAMAS_PARA_INSTALAR_APT[@]}; do
     if ! dpkg -l | grep -q $programa; then
