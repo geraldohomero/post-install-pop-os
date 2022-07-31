@@ -3,6 +3,11 @@ VERMELHO='\e[1;91m'
 VERDE='\e[1;92m'
 SEM_COR='\e[0m'
 #-----------https://github.com/geraldohomero/-------------#
+#----------https://geraldohomero.github.io/---------------#
+
+#------------Um projeto de script pessoal-----------------#
+# PPA_LUTRIS="ppa:lutris-team/lutris"
+
 DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/Programas"
 PROGRAMAS_PARA_INSTALAR_DEB=(
   https://protonvpn.com/download/protonvpn-stable-release_1.0.1-1_all.deb
@@ -48,7 +53,7 @@ else
   echo -e "${VERDE}[INFO] - Conexão com a Internet verificada.${SEM_COR}"
 fi
 
-# wget está instalado?
+# wget está instalado? #
 if [[ ! -x $(which wget) ]]; then
   echo -e "${VERMELHO}[ERRO] - O programa wget não está instalado.${SEM_COR}"
   echo -e "${VERDE}[INFO] - Instalando wget...${SEM_COR}"
@@ -57,7 +62,7 @@ else
   echo -e "${VERDE}[INFO] - O programa wget já está instalado.${SEM_COR}"
 fi
 
-# Updates e upgrades
+# Updates e upgrades #
 upgrade_limpeza () {
   echo -e "${VERDE}[INFO] - Fazendo upgrade e limpeza...${SEM_COR}"
   sleep 1
@@ -71,7 +76,7 @@ upgrade_limpeza () {
   sudo flatpak update
 }  
 
-#instalando pacotes e programas
+# Instalando pacotes e programas #
 
 instalar_pacotes_apt () {
   for programa in ${PROGRAMAS_PARA_INSTALAR_APT[@]}; do
@@ -84,6 +89,11 @@ instalar_pacotes_apt () {
   done
 }
 
+# add_ppa () {
+#  echo -e "${VERDE}[INFO] - Adicionando PPAs...${SEM_COR}"
+#  sudo add-apt-repository "$PPA_LUTRIS" -y &> /dev/null
+#  atualizar_repositorios
+#}
 
 instalar_flatpak () {
   for programa in ${PROGRAMAS_PARA_INSTALAR_FLATPAK[@]}; do
@@ -91,7 +101,7 @@ instalar_flatpak () {
       echo -e "${VERDE}[INFO] - Instalando $programa...${SEM_COR}"
       flatpak install flathub $programa -y
     else
-      echo -e "${VERDE}[INFO] - O pacote $programa já está instalado.${SEM_COR}"
+      echo -e "${VERDE}[INFO] - O flatpak $programa já está instalado.${SEM_COR}"
     fi
   done
 }
@@ -113,7 +123,7 @@ baixar_pacotes_debs () {
   done
 }
 
-#----# Execução
+#----# Execução #----#
 instalar_pacotes_apt
 instalar_flatpak
 baixar_pacotes_debs
