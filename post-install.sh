@@ -92,8 +92,13 @@ instalar_pacotes_apt () {
 # add_ppa () {
 #  echo -e "${VERDE}[INFO] - Adicionando PPAs...${SEM_COR}"
 #  sudo add-apt-repository "$PPA_LUTRIS" -y &> /dev/null
-#  atualizar_repositorios
+#  atualizacao_repositorios
 #}
+
+atualizacao_repositorios () {
+  echo -e "${VERDE}[INFO] - Atualizando repositórios...${SEM_COR}"
+  sudo apt update &> /dev/null
+}
 
 instalar_flatpak () {
   for programa in ${PROGRAMAS_PARA_INSTALAR_FLATPAK[@]}; do
@@ -125,6 +130,8 @@ baixar_pacotes_debs () {
 
 #----# Execução #----#
 instalar_pacotes_apt
+atualizacao_repositorios
 instalar_flatpak
 baixar_pacotes_debs
+atualizacao_repositorios
 upgrade_limpeza
