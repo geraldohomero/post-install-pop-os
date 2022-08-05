@@ -18,6 +18,7 @@ PROGRAMAS_PARA_INSTALAR_DEB=(
 )
 PROGRAMAS_PARA_INSTALAR_APT=(
   htop
+  btop
   neofetch
   openjdk-8-jre
   libreoffice-java-common
