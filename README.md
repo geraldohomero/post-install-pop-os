@@ -1,4 +1,4 @@
-# Post Install shellscript for Pop!_OS
+# Post Install script for Pop!_OS
 
 Run:
 
