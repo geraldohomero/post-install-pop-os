@@ -17,7 +17,6 @@ PROGRAMAS_PARA_INSTALAR_DEB=(
   https://ocean.surfshark.com/debian/pool/main/s/surfshark-release/surfshark-release_1.0.0-2_amd64.deb
 )
 PROGRAMAS_PARA_INSTALAR_APT=(
-  htop
   btop
   neofetch
   openjdk-8-jre
@@ -25,6 +24,7 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   virtualbox
   lutris
   codium
+  vim
 )
 PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   com.bitwarden.desktop
