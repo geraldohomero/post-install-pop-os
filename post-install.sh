@@ -23,7 +23,6 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   libreoffice-java-common
   virtualbox
   lutris
-  codium
   vim
 )
 PROGRAMAS_PARA_INSTALAR_FLATPAK=(
