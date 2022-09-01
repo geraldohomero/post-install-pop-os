@@ -41,7 +41,6 @@ PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   net.davidotek.pupgui2
   io.github.antimicrox.antimicrox
   com.rafaelmardojai.Blanket
-  com.usebottles.bottles
 )
 
 #--------------Validações-------------#
