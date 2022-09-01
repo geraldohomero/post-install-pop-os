@@ -23,6 +23,9 @@
 
 # Git
 
+![image](https://user-images.githubusercontent.com/70844369/188001840-4a16961c-e1d1-4c63-b0ce-5d91f4eb9ed5.png)
+
+
 `git log`
 
 `git log --oneline`
