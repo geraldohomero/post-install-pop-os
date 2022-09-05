@@ -24,6 +24,7 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   virtualbox
   lutris
   vim
+  audacity
 )
 PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   com.bitwarden.desktop
