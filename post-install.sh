@@ -77,7 +77,6 @@ upgrade_limpeza () {
 }  
 
 # Instalando pacotes e programas #
-
 instalar_pacotes_apt () {
   for programa in ${PROGRAMAS_PARA_INSTALAR_APT[@]}; do
     if ! dpkg -l | grep -q $programa; then
