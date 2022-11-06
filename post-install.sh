@@ -73,7 +73,7 @@ upgrade_limpeza () {
   sudo apt install -f
   sudo apt full-upgrade
   sudo apt autoremove -y 
-  sudo flatpak update
+  flatpak update
 }  
 
 # Instalando pacotes e programas #
