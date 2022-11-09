@@ -10,11 +10,10 @@ SEM_COR='\e[0m'
 
 DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/Programas"
 PROGRAMAS_PARA_INSTALAR_DEB=(
-  https://protonvpn.com/download/protonvpn-stable-release_1.0.1-1_all.deb
+  https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3_all.deb
   https://iriun.gitlab.io/iriunwebcam-2.6.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/nautilus-megasync-xUbuntu_22.04_amd64.deb
-  https://ocean.surfshark.com/debian/pool/main/s/surfshark-release/surfshark-release_1.0.0-2_amd64.deb
 )
 PROGRAMAS_PARA_INSTALAR_APT=(
   btop
@@ -121,6 +120,10 @@ baixar_pacotes_debs () {
       sudo dpkg -i $DIRETORIO_DOWNLOAD_PROGRAMAS/${url##*/} &> /dev/null
       echo -e "${VERDE}[INFO] - Instalando dependências...${SEM_COR}"
       sudo apt -f install -y &> /dev/null
+      sudo apt update &> /dev/null
+      echo -e "${VERDE}[INFO] - Atualizando repositórios...${SEM_COR}"
+      sudo apt install protonvpn -y &> /dev/null
+      echo -e "${VERDE}[INFO] - Instalando ProtonVPN${SEM_COR}"
     else
       echo -e "${VERDE}[INFO] - O programa $url_extraida já está instalado.${SEM_COR}"
     fi
