@@ -10,7 +10,7 @@ SEM_COR='\e[0m'
 
 DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/Programas"
 PROGRAMAS_PARA_INSTALAR_DEB=(
-  https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3_all.deb
+  https://ocean.surfshark.com/debian/pool/main/s/surfshark-release/surfshark-release_1.0.0-2_amd64.deb
   https://iriun.gitlab.io/iriunwebcam-2.6.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/nautilus-megasync-xUbuntu_22.04_amd64.deb
@@ -24,24 +24,27 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   lutris
   vim
   audacity
+  gitkraken
+  steam
+  zsh
 )
 PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   com.bitwarden.desktop
   org.kde.okular
-  net.cozic.joplin_desktop
   org.zotero.Zotero
+  com.heroicgameslauncher.hgl
   fr.romainvigier.MetadataCleaner
   org.gnome.Cheese
   com.github.debauchee.barrier
   com.github.tenderowl.frog
   io.freetubeapp.FreeTube
-  org.freeplane.App
+  com.simplenote.Simplenote
   org.gnome.Characters
   com.github.tchx84.Flatseal
   net.davidotek.pupgui2
   io.github.antimicrox.antimicrox
-  com.rafaelmardojai.Blanket
 )
+
 
 #--------------Validações-------------#
 # Internet?
@@ -120,10 +123,6 @@ baixar_pacotes_debs () {
       sudo dpkg -i $DIRETORIO_DOWNLOAD_PROGRAMAS/${url##*/} &> /dev/null
       echo -e "${VERDE}[INFO] - Instalando dependências...${SEM_COR}"
       sudo apt -f install -y &> /dev/null
-      sudo apt update &> /dev/null
-      echo -e "${VERDE}[INFO] - Atualizando repositórios...${SEM_COR}"
-      sudo apt install protonvpn -y &> /dev/null
-      echo -e "${VERDE}[INFO] - Instalando ProtonVPN${SEM_COR}"
     else
       echo -e "${VERDE}[INFO] - O programa $url_extraida já está instalado.${SEM_COR}"
     fi
