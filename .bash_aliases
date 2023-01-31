@@ -1,4 +1,4 @@
-alias aliasconf='gedit ~/.bash_aliases'
+alias aliasconfig='gedit ~/.bash_aliases'
 
 
 alias ips='ip -c -br a'
