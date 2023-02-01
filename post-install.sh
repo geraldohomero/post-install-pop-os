@@ -10,8 +10,7 @@ SEM_COR='\e[0m'
 
 DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/Programas"
 PROGRAMAS_PARA_INSTALAR_DEB=(
-  https://ocean.surfshark.com/debian/pool/main/s/surfshark-release/surfshark-release_1.0.0-2_amd64.deb
-  https://iriun.gitlab.io/iriunwebcam-2.6.deb
+  http://iriun.gitlab.io/iriunwebcam-2.3.1.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/nautilus-megasync-xUbuntu_22.04_amd64.deb
 )
@@ -41,8 +40,6 @@ PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   com.simplenote.Simplenote
   org.gnome.Characters
   com.github.tchx84.Flatseal
-  net.davidotek.pupgui2
-  io.github.antimicrox.antimicrox
 )
 
 
@@ -129,10 +126,17 @@ baixar_pacotes_debs () {
   done
 }
 
+instala_surfshark () {
+  curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh #gets the installation script
+  cat surfshark-install.sh #shows script's content
+  sh surfshark-install.sh #installs surfshark
+}
+
 #----# Execução #----#
 instalar_pacotes_apt
 atualizacao_repositorios
 instalar_flatpak
 baixar_pacotes_debs
+instala_surfshark
 atualizacao_repositorios
 upgrade_limpeza
