@@ -1,4 +1,4 @@
-# Post Install script for Pop!_OS
+# Post Install script for Pop!_OS (22.04)
 
 Post-installation script for the `Pop!_OS` distribution, based on Ubuntu. The script contains internet verification and whether `wget` is installed on the device. Also, install `apt`, `flatpak` and `deb` packages; updates repositories and performs system cleanup.
 
