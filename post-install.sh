@@ -20,11 +20,9 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   openjdk-8-jre
   libreoffice-java-common
   virtualbox
-  lutris
   vim
   audacity
   gitkraken
-  steam
   zsh
 )
 PROGRAMAS_PARA_INSTALAR_FLATPAK=(
