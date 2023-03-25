@@ -69,8 +69,10 @@ upgrade_limpeza () {
   sudo dpkg --configure -a
   sudo apt install -f
   sudo apt full-upgrade
-  sudo apt autoremove -y 
+  sudo apt autoremove -y
   flatpak update
+  #flatpak repair --user
+  #flatpak remove --unused
 }  
 
 # Instalando pacotes e programas #
