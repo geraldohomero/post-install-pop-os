@@ -1,6 +1,5 @@
 alias aliasconfig='gedit ~/.bash_aliases'
 
-alias upd='sudo apt update && sudo apt upgrade'
 alias ips='ip -c -br a'
 alias his='history|grep'
 alias ports='netstat -tulanp'
