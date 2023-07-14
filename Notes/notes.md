@@ -41,6 +41,8 @@
 
 `git merge nomeDaNovaBranch`  "enviar de uma branch para outra"
 
+`git submodule update --remote --merge`
+
 # Jellyfin
 
 `wget -O - https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key | sudo apt-key add -`
