@@ -24,18 +24,23 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   audacity
   gitkraken
   zsh
+  steam
 )
 PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   com.bitwarden.desktop
   org.kde.okular
   org.zotero.Zotero
   com.heroicgameslauncher.hgl
+  io.gitlab.librewolf-community
+  com.microsoft.Edge
   fr.romainvigier.MetadataCleaner
   org.gnome.Cheese
   com.github.debauchee.barrier
+  com.stremio.Stremio
   com.github.tenderowl.frog
   io.freetubeapp.FreeTube
   com.simplenote.Simplenote
+  md.obsidian.Obsidian 
   org.gnome.Characters
   com.github.tchx84.Flatseal
 )
