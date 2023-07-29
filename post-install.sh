@@ -123,26 +123,38 @@ instalar_flatpak () {
 }
 
 baixar_pacotes_debs () {
+  # Adiciona o diretório para downloads, se não existir
   [[ ! -d "$DIRETORIO_DOWNLOAD_PROGRAMAS" ]] && mkdir "$DIRETORIO_DOWNLOAD_PROGRAMAS"
-  for url in ${PROGRAMAS_PARA_INSTALAR_DEB[@]}; do
-    url_extraida=$(echo -e ${url##*/} | sed 's/-/_/g' | cut -d _ -f 1)
-    if ! dpkg -l | grep -iq $url_extraida; then
-      echo -e "${VERDE}[INFO] - Baixando o arquivo $url_extraida...${SEM_COR}"
-      wget -c "$url" -P "$DIRETORIO_DOWNLOAD_PROGRAMAS" &> /dev/null
-      echo -e "${VERDE}[INFO] - Instalando $url_extraida...${SEM_COR}"
-      sudo dpkg -i $DIRETORIO_DOWNLOAD_PROGRAMAS/${url##*/} &> /dev/null
-      echo -e "${VERDE}[INFO] - Instalando dependências...${SEM_COR}"
-      sudo apt -f install -y &> /dev/null
-    else
-      echo -e "${VERDE}[INFO] - O programa $url_extraida já está instalado.${SEM_COR}"
-    fi
+
+  for url in "${PROGRAMAS_PARA_INSTALAR_DEB[@]}"; do
+    nome_pacote=$(basename "$url")
+    caminho_destino="$DIRETORIO_DOWNLOAD_PROGRAMAS/$nome_pacote"
+
+    echo -e "${VERDE}[INFO] - Baixando pacote a partir do URL: $url${SEM_COR}"
+    wget -c "$url" -P "$DIRETORIO_DOWNLOAD_PROGRAMAS" &> /dev/null
+
+    echo -e "${VERDE}[INFO] - Instalando pacote: $nome_pacote${SEM_COR}"
+    sudo dpkg -i "$caminho_destino"
+    sudo apt -f install -y &> /dev/null
   done
 }
 
 instala_surfshark () {
-  curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh #gets the installation script
-  cat surfshark-install.sh #shows script's content
-  sh surfshark-install.sh #installs surfshark
+  echo -e "${VERDE}[INFO] - Baixando o script de instalação do Surfshark VPN...${SEM_COR}"
+  curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh
+
+  echo -e "${VERDE}[INFO] - Script de instalação baixado. Exibindo o conteúdo do script:${SEM_COR}"
+  cat surfshark-install.sh
+
+  echo -e "${VERDE}[INFO] - Executando o script de instalação do Surfshark VPN...${SEM_COR}"
+  sh surfshark-install.sh
+
+  # Check if the installation was successful
+  if dpkg -l | grep -q "surfshark"; then
+    echo -e "${VERDE}[INFO] - Surfshark VPN foi instalado com sucesso.${SEM_COR}"
+  else
+    echo -e "${VERMELHO}[ERROR] - Ocorreu um erro durante a instalação do Surfshark VPN.${SEM_COR}"
+  fi
 }
 
 #----# Execução #----#
