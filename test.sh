@@ -130,11 +130,22 @@ baixar_pacotes_debs () {
 }
 
 instala_surfshark () {
-  curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh #gets the installation script
-  cat surfshark-install.sh #shows script's content
-  sh surfshark-install.sh #installs surfshark
-}
+  echo -e "${VERDE}[INFO] - Baixando o script de instalação do Surfshark VPN...${SEM_COR}"
+  curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh
 
+  echo -e "${VERDE}[INFO] - Script de instalação baixado. Exibindo o conteúdo do script:${SEM_COR}"
+  cat surfshark-install.sh
+
+  echo -e "${VERDE}[INFO] - Executando o script de instalação do Surfshark VPN...${SEM_COR}"
+  sh surfshark-install.sh
+
+  # Check if the installation was successful
+  if dpkg -l | grep -q "surfshark"; then
+    echo -e "${VERDE}[INFO] - Surfshark VPN foi instalado com sucesso.${SEM_COR}"
+  else
+    echo -e "${VERMELHO}[ERROR] - Ocorreu um erro durante a instalação do Surfshark VPN.${SEM_COR}"
+  fi
+}
 #----# Execução #----#
 instalar_pacotes_apt
 atualizacao_repositorios
