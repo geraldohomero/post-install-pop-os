@@ -104,6 +104,14 @@ atualizacao_repositorios () {
 }
 
 instalar_flatpak () {
+  # Adiciona repositório Flathub
+  if ! flatpak remote-list | grep -q "flathub"; then
+    echo -e "${VERDE}[INFO] - Adicionando o repositório Flathub...${SEM_COR}"
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  else
+    echo -e "${VERDE}[INFO] - O repositório Flathub já está adicionado.${SEM_COR}"
+  fi
+  # Instala flatpak
   for programa in ${PROGRAMAS_PARA_INSTALAR_FLATPAK[@]}; do
     if ! flatpak list | grep -q $programa; then
       echo -e "${VERDE}[INFO] - Instalando $programa...${SEM_COR}"
