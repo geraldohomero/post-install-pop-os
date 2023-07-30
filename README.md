@@ -26,7 +26,7 @@ cd ~/Downloads/post-install-pop-os
 
 
 ```bash
-chmod +x run.sh`
+chmod +x run.sh
 ```
 
 4. Run the Post-Install Setup Script:
