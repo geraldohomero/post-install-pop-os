@@ -47,17 +47,20 @@ The setup script will display colorful and informative messages as it progresses
 After the setup is completed, you can review the installed software and aliases on your system. The `post-install.sh` script installs software packages listed in its configuration, while `alias.sh` sets up custom aliases.
 
 
-7. Customize Aliases (Optional):
+7. Customize Aliases and Installed programs Optional):
 
 You can modify or add your own custom aliases in the `alias.sh` script to suit your workflow. Edit the CUSTOM_ALIASES array with the desired aliases, and run the `alias.sh` script again to update your .bash_aliases file.
 
 ```bash
 CUSTOM_ALIASES=(
     'alias <aliasName>="<what it does"'
-    ...
-    ...
+    .
+    .
+    .
+    .
 )
-
 ```
+
+>**Important**: While the script aims to automate setup tasks, it's essential to review the code and understand what it does before running it on your machine. **Ensure that you back up critical data before proceeding**. The script provided is for **educational purposes** and comes with **no warranty or support**.
 
 
