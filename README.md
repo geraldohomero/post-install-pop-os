@@ -5,6 +5,7 @@ Post-installation script for the `Pop!_OS` distribution, based on Ubuntu. The sc
 ***
 ![image](https://user-images.githubusercontent.com/70844369/195471666-c7a930d4-19ac-4605-80e3-4bd3120c39c3.png#vitrinedev)
 
+>Note: The script was designed for Pop!_OS 22.04 LTS, but it may also work on other Debian/Ubuntu-based distributions. However, please be cautious and ensure compatibility before running it on other systems.
 
 1. Download
 
@@ -45,7 +46,6 @@ The setup script will display colorful and informative messages as it progresses
 
 After the setup is completed, you can review the installed software and aliases on your system. The `post-install.sh` script installs software packages listed in its configuration, while `alias.sh` sets up custom aliases.
 
-Note: The script was designed for Pop!_OS, but it may also work on other Debian/Ubuntu-based distributions. However, please be cautious and ensure compatibility before running it on other systems.
 
 7. Customize Aliases (Optional):
 
