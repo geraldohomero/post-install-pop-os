@@ -32,7 +32,7 @@ chmod +x run.sh
 
 4. Run the Post-Install Setup Script:
 
-Execute the "run.sh" script to start the post-installation process. The script will automatically run and make executable the `post-install.sh` script and then the `alias.sh` script, installing necessary packages and setting up custom aliases.
+Execute the `run.sh` script to start the post-installation process. The script will automatically run and make executable the `post-install.sh` script and then the `alias.sh` script, installing necessary packages and setting up custom aliases.
 
 ```bash
 ./run.sh
