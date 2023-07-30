@@ -150,11 +150,30 @@ instala_surfshark () {
   fi
 }
 
+instala_syncthing () {
+# Add the release PGP keys
+  echo -e "${VERDE}[INFO] - Adding the release PGP keys...${SEM_COR}"
+  sudo curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+# Add the stable channel to APT sources
+  echo -e "${VERDE}[INFO] - Adding the \"stable\" channel to APT sources...${SEM_COR}"
+  echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+# Add the candidate channel to APT sources
+  echo -e "${VERDE}[INFO] - Adding the \"candidate\" channel to APT sources...${SEM_COR}"
+  echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing candidate" | sudo tee -a /etc/apt/sources.list.d/syncthing.list
+# Update APT
+  echo -e "${VERDE}[INFO] - Updating APT...${SEM_COR}"
+  sudo apt update &> /dev/null
+# Install Syncthing
+  echo -e "${VERDE}[INFO] - Installing Syncthing...${SEM_COR}"
+  sudo apt-get install syncthing
+  echo -e "${VERDE}[INFO] - Syncthing installation completed successfully.${SEM_COR}"
+}
+
 #----# Execução #----#
 instalar_pacotes_apt
 atualizacao_repositorios
 instalar_flatpak
 baixar_pacotes_debs
 instala_surfshark
-atualizacao_repositorios
+instala_syncthing
 upgrade_limpeza
