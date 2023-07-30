@@ -11,28 +11,23 @@ Post-installation script for the `Pop!_OS` distribution, based on Ubuntu. The sc
 
 1. Download
 
-Download the entire "post-install-pop-os" folder containing the script files to your preferred location. You can clone the repository using Git or download it as a ZIP file from the repository's webpage.
+Download the entire "post-install-pop-os" folder containing the script files to your preferred location. You can clone (to the **Downloads** folder) the repository using Git or download it as a ZIP file from the repository's webpage.
 
+At the terminal, run:
 ```bash
+cd Downloads/
 git clone <repo url>
+cd post-install-pop-os/
 ```
 
-2. Navigate to the "Downloads" Directory:
-
-Open your terminal and navigate to the "Downloads" directory, where you have saved the "post-install-pop-os" folder. You can use the cd command to change directories:
-
-```bash
-cd ~/Downloads/post-install-pop-os
-```
-
-3. Make the Scripts Executable:
+2. Make the Scripts Executable:
 
 
 ```bash
 chmod +x run.sh
 ```
 
-4. Run the Post-Install Setup Script:
+3. Run the Post-Install Setup Script:
 
 Execute the `run.sh` script to start the post-installation process. The script will automatically run and make executable the `post-install.sh` script and then the `alias.sh` script, installing necessary packages and setting up custom aliases.
 
@@ -40,16 +35,16 @@ Execute the `run.sh` script to start the post-installation process. The script w
 ./run.sh
 ```
 
-5. Follow On-Screen Instructions:
+4. Follow On-Screen Instructions:
 
 The setup script will display colorful and informative messages as it progresses through the installation and configuration steps. You may need to provide your password for certain operations that require administrative privileges.
 
-6. Review Installed Software and Aliases:
+5. Review Installed Software and Aliases:
 
 After the setup is completed, you can review the installed software and aliases on your system. The `post-install.sh` script installs software packages listed in its configuration, while `alias.sh` sets up custom aliases.
 
 
-7. Customize Aliases and Installed programs (Optional):
+6. Customize Aliases and Installed programs (Optional):
 
 You can modify or add your own custom aliases in the `alias.sh` script to suit your workflow. Edit the CUSTOM_ALIASES array with the desired aliases, and run the `alias.sh` script again to update your .bash_aliases file. The same principle is valid for the `post-install.sh` and the arrays of the `flatpak` and `apt`. 
 
