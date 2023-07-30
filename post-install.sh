@@ -4,12 +4,10 @@ VERDE='\e[1;92m'
 SEM_COR='\e[0m'
 #-----------https://github.com/geraldohomero/-------------#
 #----------https://geraldohomero.github.io/---------------#
-
 #------------Um projeto de script pessoal-----------------#
 
 DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/Programas"
 PROGRAMAS_PARA_INSTALAR_DEB=(
-  http://iriun.gitlab.io/iriunwebcam-2.3.1.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/nautilus-megasync-xUbuntu_22.04_amd64.deb
 )
@@ -20,9 +18,7 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   libreoffice-java-common
   virtualbox
   vim
-  audacity
-  gitkraken
-  zsh
+  git
   steam
 )
 PROGRAMAS_PARA_INSTALAR_FLATPAK=(
@@ -32,18 +28,14 @@ PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   com.heroicgameslauncher.hgl
   io.gitlab.librewolf-community
   com.microsoft.Edge
-  fr.romainvigier.MetadataCleaner
-  org.gnome.Cheese
-  com.github.debauchee.barrier
+  com.axosoft.GitKraken
   com.stremio.Stremio
-  com.github.tenderowl.frog
-  io.freetubeapp.FreeTube
   com.simplenote.Simplenote
   md.obsidian.Obsidian 
   org.gnome.Characters
   com.github.tchx84.Flatseal
+  io.missioncenter.MissionCenter
 )
-
 
 #--------------Validações-------------#
 # Internet?
@@ -151,19 +143,19 @@ instala_surfshark () {
 }
 
 instala_syncthing () {
-# Add the release PGP keys
+  # Add the release PGP keys
   echo -e "${VERDE}[INFO] - Adding the release PGP keys...${SEM_COR}"
   sudo curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-# Add the stable channel to APT sources
+  # Add the stable channel to APT sources
   echo -e "${VERDE}[INFO] - Adding the \"stable\" channel to APT sources...${SEM_COR}"
   echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
-# Add the candidate channel to APT sources
+  # Add the candidate channel to APT sources
   echo -e "${VERDE}[INFO] - Adding the \"candidate\" channel to APT sources...${SEM_COR}"
   echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing candidate" | sudo tee -a /etc/apt/sources.list.d/syncthing.list
-# Update APT
+  # Update APT
   echo -e "${VERDE}[INFO] - Updating APT...${SEM_COR}"
   sudo apt update &> /dev/null
-# Install Syncthing
+  # Install Syncthing
   echo -e "${VERDE}[INFO] - Installing Syncthing...${SEM_COR}"
   sudo apt-get install syncthing
   echo -e "${VERDE}[INFO] - Syncthing installation completed successfully.${SEM_COR}"
