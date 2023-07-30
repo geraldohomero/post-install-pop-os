@@ -6,7 +6,6 @@ SEM_COR='\e[0m'
 #----------https://geraldohomero.github.io/---------------#
 
 #------------Um projeto de script pessoal-----------------#
-# PPA_LUTRIS="ppa:lutris-team/lutris"
 
 DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/Programas"
 PROGRAMAS_PARA_INSTALAR_DEB=(
@@ -91,12 +90,6 @@ instalar_pacotes_apt () {
     fi
   done
 }
-
-# add_ppa () {
-#  echo -e "${VERDE}[INFO] - Adicionando PPAs...${SEM_COR}"
-#  sudo add-apt-repository "$PPA_LUTRIS" -y &> /dev/null
-#  atualizacao_repositorios
-#}
 
 atualizacao_repositorios () {
   echo -e "${VERDE}[INFO] - Atualizando repositórios...${SEM_COR}"
