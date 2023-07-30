@@ -21,8 +21,8 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   virtualbox
   vim
   audacity
-  git
   gitkraken
+  zsh
   steam
 )
 PROGRAMAS_PARA_INSTALAR_FLATPAK=(
@@ -32,13 +32,16 @@ PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   com.heroicgameslauncher.hgl
   io.gitlab.librewolf-community
   com.microsoft.Edge
+  fr.romainvigier.MetadataCleaner
   org.gnome.Cheese
+  com.github.debauchee.barrier
   com.stremio.Stremio
+  com.github.tenderowl.frog
+  io.freetubeapp.FreeTube
   com.simplenote.Simplenote
   md.obsidian.Obsidian 
   org.gnome.Characters
   com.github.tchx84.Flatseal
-  io.missioncenter.MissionCenter
 )
 
 
