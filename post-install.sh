@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-VERMELHO='\e[1;91m'
-VERDE='\e[1;92m'
-SEM_COR='\e[0m'
+RED='\e[1;91m'
+GREEN='\e[1;92m'
+NO_COLOR='\e[0m'
 #-----------https://github.com/geraldohomero/-------------#
 #----------https://geraldohomero.github.io/---------------#
-#------------Um projeto de script pessoal-----------------#
+#------------A personal script project-------------------#
 
-DIRETORIO_DOWNLOAD_PROGRAMAS="$HOME/Downloads/Programas"
-PROGRAMAS_PARA_INSTALAR_DEB=(
+DOWNLOAD_PROGRAMS_DIRECTORY="$HOME/Downloads/Programas"
+PROGRAMS_TO_INSTALL_DEB=(
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
   https://mega.nz/linux/repo/xUbuntu_22.04/amd64/nautilus-megasync-xUbuntu_22.04_amd64.deb
 )
-PROGRAMAS_PARA_INSTALAR_APT=(
+PROGRAMS_TO_INSTALL_APT=(
   btop
   neofetch
   openjdk-8-jre
@@ -21,7 +21,7 @@ PROGRAMAS_PARA_INSTALAR_APT=(
   git
   steam
 )
-PROGRAMAS_PARA_INSTALAR_FLATPAK=(
+PROGRAMS_TO_INSTALL_FLATPAK=(
   com.bitwarden.desktop
   org.kde.okular
   org.zotero.Zotero
@@ -37,27 +37,28 @@ PROGRAMAS_PARA_INSTALAR_FLATPAK=(
   io.missioncenter.MissionCenter
 )
 
-#--------------Validações-------------#
+#--------------Validations-------------#
 # Internet?
 if ! ping -c 1 8.8.8.8 -q &> /dev/null; then
-  echo -e "${VERMELHO}[ERROR] - Seu computador não tem conexão com a Internet.${SEM_COR}"
+  echo -e "${RED}[ERROR] - Your computer does not have an Internet connection.${NO_COLOR}"
   exit 1
 else
-  echo -e "${VERDE}[INFO] - Conexão com a Internet verificada.${SEM_COR}"
+  echo -e "${GREEN}[INFO] - Internet connection verified.${NO_COLOR}"
 fi
 
-# wget está instalado? #
+
+# Is wget installed? #
 if [[ ! -x $(which wget) ]]; then
-  echo -e "${VERMELHO}[ERRO] - O programa wget não está instalado.${SEM_COR}"
-  echo -e "${VERDE}[INFO] - Instalando wget...${SEM_COR}"
+  echo -e "${RED}[ERROR] - The wget program is not installed.${NO_COLOR}"
+  echo -e "${GREEN}[INFO] - Installing wget...${NO_COLOR}"
   sudo apt install wget -y &> /dev/null
 else
-  echo -e "${VERDE}[INFO] - O programa wget já está instalado.${SEM_COR}"
+  echo -e "${GREEN}[INFO] - The wget program is already installed.${NO_COLOR}"
 fi
 
-# Updates e upgrades #
-upgrade_limpeza () {
-  echo -e "${VERDE}[INFO] - Fazendo upgrade e limpeza...${SEM_COR}"
+# Updates and upgrades #
+upgrade_cleanup () {
+  echo -e "${GREEN}[INFO] - Performing upgrade and cleanup...${NO_COLOR}"
   sleep 1
   sudo apt autoclean
   sudo apt clean
@@ -69,103 +70,105 @@ upgrade_limpeza () {
   flatpak update
   #flatpak repair --user
   #flatpak remove --unused
-}  
+}
 
-# Instalando pacotes e programas #
-instalar_pacotes_apt () {
-  for programa in ${PROGRAMAS_PARA_INSTALAR_APT[@]}; do
-    if ! dpkg -l | grep -q $programa; then
-      echo -e "${VERDE}[INFO] - Instalando o $programa...${SEM_COR}"
-      sudo apt install $programa -y &> /dev/null
+# Installing packages and programs #
+install_apt_packages() {
+  for program in ${PROGRAMS_TO_INSTALL_APT[@]}; do
+    if ! dpkg -l | grep -q $program; then
+      echo -e "${GREEN}[INFO] - Installing $program...${NO_COLOR}"
+      sudo apt install $program -y &> /dev/null
     else
-      echo -e "${VERDE}[INFO] - O pacote $programa já está instalado.${SEM_COR}"
+      echo -e "${GREEN}[INFO] - The package $program is already installed.${NO_COLOR}"
     fi
   done
 }
 
-atualizacao_repositorios () {
-  echo -e "${VERDE}[INFO] - Atualizando repositórios...${SEM_COR}"
+update_repositories() {
+  echo -e "${GREEN}[INFO] - Updating repositories...${NO_COLOR}"
   sudo apt update &> /dev/null
 }
 
-instalar_flatpak () {
-  # Adiciona repositório Flathub
+install_flatpak () {
+  # Add Flathub repository
   if ! flatpak remote-list | grep -q "flathub"; then
-    echo -e "${VERDE}[INFO] - Adicionando o repositório Flathub...${SEM_COR}"
+    echo -e "${GREEN}[INFO] - Adding Flathub repository...${NO_COLOR}"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   else
-    echo -e "${VERDE}[INFO] - O repositório Flathub já está adicionado.${SEM_COR}"
+    echo -e "${GREEN}[INFO] - Flathub repository is already added.${NO_COLOR}"
   fi
-  # Instala flatpak
-  for programa in ${PROGRAMAS_PARA_INSTALAR_FLATPAK[@]}; do
+  # Install flatpak
+  for program in ${PROGRAMS_TO_INSTALL_FLATPAK[@]}; do
     if ! flatpak list | grep -q $programa; then
-      echo -e "${VERDE}[INFO] - Instalando $programa...${SEM_COR}"
-      flatpak install flathub $programa -y
+      echo -e "${GREEN}[INFO] - Installing $programa...${NO_COLOR}"
+      flatpak install flathub $program -y
     else
-      echo -e "${VERDE}[INFO] - O flatpak $programa já está instalado.${SEM_COR}"
+      echo -e "${GREEN}[INFO] - $program flatpak is already installed.${NO_COLOR}"
     fi
   done
 }
 
-baixar_pacotes_debs () {
-  # Adiciona o diretório para downloads, se não existir
-  [[ ! -d "$DIRETORIO_DOWNLOAD_PROGRAMAS" ]] && mkdir "$DIRETORIO_DOWNLOAD_PROGRAMAS"
 
-  for url in "${PROGRAMAS_PARA_INSTALAR_DEB[@]}"; do
-    nome_pacote=$(basename "$url")
-    caminho_destino="$DIRETORIO_DOWNLOAD_PROGRAMAS/$nome_pacote"
+download_deb_packages () {
+  # Add the directory for downloads if it does not exist
+  [[ ! -d "$DOWNLOAD_PROGRAMS_DIRECTORY" ]] && mkdir "$DOWNLOAD_PROGRAMS_DIRECTORY"
 
-    echo -e "${VERDE}[INFO] - Baixando pacote a partir do URL: $url${SEM_COR}"
-    wget -c "$url" -P "$DIRETORIO_DOWNLOAD_PROGRAMAS" &> /dev/null
+  for url in "${PROGRAMS_TO_INSTALL_DEB[@]}"; do
+    package_name=$(basename "$url")
+    destination_path="$DOWNLOAD_PROGRAMS_DIRECTORY/$package_name"
 
-    echo -e "${VERDE}[INFO] - Instalando pacote: $nome_pacote${SEM_COR}"
-    sudo dpkg -i "$caminho_destino"
+    echo -e "${GREEN}[INFO] - Downloading package from URL: $url${NO_COLOR}"
+    wget -c "$url" -P "$DOWNLOAD_PROGRAMS_DIRECTORY" &> /dev/null
+
+    echo -e "${GREEN}[INFO] - Installing package: $package_name${NO_COLOR}"
+    sudo dpkg -i "$destination_path"
     sudo apt -f install -y &> /dev/null
   done
 }
 
-instala_surfshark () {
-  echo -e "${VERDE}[INFO] - Baixando o script de instalação do Surfshark VPN...${SEM_COR}"
+
+install_surfshark () {
+  echo -e "${GREEN}[INFO] - Downloading the Surfshark VPN installation script...${NO_COLOR}"
   curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh
 
-  echo -e "${VERDE}[INFO] - Script de instalação baixado. Exibindo o conteúdo do script:${SEM_COR}"
+  echo -e "${GREEN}[INFO] - Downloaded installation script. Displaying the script contents:${NO_COLOR}"
   cat surfshark-install.sh
 
-  echo -e "${VERDE}[INFO] - Executando o script de instalação do Surfshark VPN...${SEM_COR}"
+  echo -e "${GREEN}[INFO] - Running the Surfshark VPN installation script...${NO_COLOR}"
   sh surfshark-install.sh
 
   # Check if the installation was successful
   if dpkg -l | grep -q "surfshark"; then
-    echo -e "${VERDE}[INFO] - Surfshark VPN foi instalado com sucesso.${SEM_COR}"
+    echo -e "${GREEN}[INFO] - Surfshark VPN has been successfully installed.${NO_COLOR}"
   else
-    echo -e "${VERMELHO}[ERROR] - Ocorreu um erro durante a instalação do Surfshark VPN.${SEM_COR}"
+    echo -e "${RED}[ERROR] - An error occurred during the installation of Surfshark VPN.${NO_COLOR}"
   fi
 }
 
-instala_syncthing () {
+install_syncthing () {
   # Add the release PGP keys
-  echo -e "${VERDE}[INFO] - Adding the release PGP keys...${SEM_COR}"
+  echo -e "${GREEN}[INFO] - Adding the release PGP keys...${NO_COLOR}"
   sudo curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
   # Add the stable channel to APT sources
-  echo -e "${VERDE}[INFO] - Adding the \"stable\" channel to APT sources...${SEM_COR}"
+  echo -e "${GREEN}[INFO] - Adding the \"stable\" channel to APT sources...${NO_COLOR}"
   echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
   # Add the candidate channel to APT sources
-  echo -e "${VERDE}[INFO] - Adding the \"candidate\" channel to APT sources...${SEM_COR}"
+  echo -e "${GREEN}[INFO] - Adding the \"candidate\" channel to APT sources...${NO_COLOR}"
   echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing candidate" | sudo tee -a /etc/apt/sources.list.d/syncthing.list
   # Update APT
-  echo -e "${VERDE}[INFO] - Updating APT...${SEM_COR}"
+  echo -e "${GREEN}[INFO] - Updating APT...${NO_COLOR}"
   sudo apt update &> /dev/null
   # Install Syncthing
-  echo -e "${VERDE}[INFO] - Installing Syncthing...${SEM_COR}"
+  echo -e "${GREEN}[INFO] - Installing Syncthing...${NO_COLOR}"
   sudo apt-get install syncthing
-  echo -e "${VERDE}[INFO] - Syncthing installation completed successfully.${SEM_COR}"
+  echo -e "${GREEN}[INFO] - Syncthing installation completed successfully.${NO_COLOR}"
 }
 
-#----# Execução #----#
-instalar_pacotes_apt
-atualizacao_repositorios
-instalar_flatpak
-baixar_pacotes_debs
-instala_surfshark
-instala_syncthing
-upgrade_limpeza
+#----# Execution #----#
+install_apt_packages
+update_repositories
+install_flatpak
+download_deb_packages
+install_surfshark
+install_syncthing
+upgrade_cleanup
