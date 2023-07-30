@@ -5,7 +5,9 @@ Post-installation script for the `Pop!_OS` distribution, based on Ubuntu. The sc
 ***
 ![image](https://user-images.githubusercontent.com/70844369/195471666-c7a930d4-19ac-4605-80e3-4bd3120c39c3.png#vitrinedev)
 
->Note: The script was designed for Pop!_OS 22.04 LTS, but it may also work on other Debian/Ubuntu-based distributions. However, please be cautious and ensure compatibility before running it on other systems.
+>**Note**: The script was designed for **Pop!_OS 22.04 (LTS)**, but it may also work on other Debian/Ubuntu-based distributions. However, please be cautious and ensure compatibility before running it on other systems.
+
+>**Important**: While the script aims to automate setup tasks, it's essential to review the code and understand what it does before running it on your machine. **Ensure that you back up critical data before proceeding**. The script provided is for **educational purposes** and comes with **no warranty or support**.
 
 1. Download
 
@@ -47,9 +49,9 @@ The setup script will display colorful and informative messages as it progresses
 After the setup is completed, you can review the installed software and aliases on your system. The `post-install.sh` script installs software packages listed in its configuration, while `alias.sh` sets up custom aliases.
 
 
-7. Customize Aliases and Installed programs Optional):
+7. Customize Aliases and Installed programs (Optional):
 
-You can modify or add your own custom aliases in the `alias.sh` script to suit your workflow. Edit the CUSTOM_ALIASES array with the desired aliases, and run the `alias.sh` script again to update your .bash_aliases file.
+You can modify or add your own custom aliases in the `alias.sh` script to suit your workflow. Edit the CUSTOM_ALIASES array with the desired aliases, and run the `alias.sh` script again to update your .bash_aliases file. The same principle is valid for the `post-install.sh` and the arrays of the `flatpak` and `apt`. 
 
 ```bash
 CUSTOM_ALIASES=(
@@ -57,10 +59,5 @@ CUSTOM_ALIASES=(
     .
     .
     .
-    .
 )
 ```
-
->**Important**: While the script aims to automate setup tasks, it's essential to review the code and understand what it does before running it on your machine. **Ensure that you back up critical data before proceeding**. The script provided is for **educational purposes** and comes with **no warranty or support**.
-
-
