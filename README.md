@@ -16,7 +16,7 @@ Download the entire "post-install-pop-os" folder containing the script files to 
 At the terminal, run:
 ```bash
 cd Downloads/
-git clone <repo url>
+git clone https://github.com/geraldohomero/post-install-pop-os.git
 cd post-install-pop-os/
 ```
 
