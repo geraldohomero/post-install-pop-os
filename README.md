@@ -56,3 +56,9 @@ CUSTOM_ALIASES=(
     .
 )
 ```
+```bash
+cd Downloads/
+git clone https://github.com/geraldohomero/post-install-pop-os.git
+cd post-install-pop-os/
+chmod +x run.sh
+```
