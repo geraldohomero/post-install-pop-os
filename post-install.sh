@@ -20,6 +20,7 @@ PROGRAMS_TO_INSTALL_APT=(
   vim
   git
   steam
+  code
 )
 PROGRAMS_TO_INSTALL_FLATPAK=(
   com.bitwarden.desktop
