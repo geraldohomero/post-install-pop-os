@@ -22,7 +22,6 @@ cd post-install-pop-os/
 
 2. Make the Scripts Executable:
 
-
 ```bash
 chmod +x run.sh
 ```
@@ -42,7 +41,6 @@ The setup script will display colorful and informative messages as it progresses
 5. Review Installed Software and Aliases:
 
 After the setup is completed, you can review the installed software and aliases on your system. The `post-install.sh` script installs software packages listed in its configuration, while `alias.sh` sets up custom aliases.
-
 
 6. Customize Aliases and Installed programs (Optional):
 
