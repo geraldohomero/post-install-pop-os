@@ -1,4 +1,5 @@
-// https://github.com/AdiulesonArlen/HuskyBlizzard-RemapingKeys
+// Código retirado de AdiulesonArlen em: https://github.com/AdiulesonArlen/HuskyBlizzard-RemapingKeys
+sleep 30 &&
 xmodmap -e "keycode 62 = Mode_switch" && 
 xmodmap -e "keycode 34 = dead_acute dead_grave Up" && 
 xmodmap -e "keycode 61 = semicolon colon Down" && 
