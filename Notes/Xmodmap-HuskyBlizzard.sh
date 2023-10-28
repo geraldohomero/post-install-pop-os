@@ -7,7 +7,7 @@
 #xmodmap -e "keycode 48 = dead_tilde dead_circumflex Right" &&
 #xmodmap -e "keycode 9 = Escape apostrophe quotedbl"
 
-sleep 20 &&
+sleep 45 &&
 xmodmap -e "keycode 135 = Mode_switch" && # keycode 135 = menu key
 xmodmap -e "keycode 35 = bracketleft braceleft Up" && # [{ = Up
 xmodmap -e "keycode 48 = dead_tilde dead_circumflex Left" && # ~^ = Left
