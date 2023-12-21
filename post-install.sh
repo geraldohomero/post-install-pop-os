@@ -19,6 +19,7 @@ PROGRAMS_TO_INSTALL_APT=(
   virtualbox
   hugo
   vim
+  neovim
   git
   steam
   code
