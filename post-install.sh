@@ -17,6 +17,7 @@ PROGRAMS_TO_INSTALL_APT=(
   openjdk-8-jre
   libreoffice-java-common
   virtualbox
+  hugo
   vim
   git
   steam
@@ -29,11 +30,13 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   com.heroicgameslauncher.hgl
   io.gitlab.librewolf-community
   com.microsoft.Edge
+  com.spotify.Client
   com.axosoft.GitKraken
   com.stremio.Stremio
   com.simplenote.Simplenote
   md.obsidian.Obsidian 
   org.gnome.Characters
+  org.qbittorrent.qBittorrent
   com.github.tchx84.Flatseal
   io.missioncenter.MissionCenter
 )
