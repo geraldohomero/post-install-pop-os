@@ -43,6 +43,8 @@
 
 `git submodule update --remote --merge`
 
+`git submodule add -b main <url> public`
+
 # Jellyfin
 
 `wget -O - https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key | sudo apt-key add -`
