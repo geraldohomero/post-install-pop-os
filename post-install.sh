@@ -27,6 +27,7 @@ PROGRAMS_TO_INSTALL_APT=(
 PROGRAMS_TO_INSTALL_FLATPAK=(
   com.bitwarden.desktop
   org.kde.okular
+  com.brave.Browser
   org.zotero.Zotero
   com.heroicgameslauncher.hgl
   io.gitlab.librewolf-community
