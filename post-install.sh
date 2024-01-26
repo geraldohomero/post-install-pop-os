@@ -41,6 +41,7 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   org.qbittorrent.qBittorrent
   com.github.tchx84.Flatseal
   io.missioncenter.MissionCenter
+  com.github.tenderowl.frog
 )
 
 #--------------Validations-------------#
