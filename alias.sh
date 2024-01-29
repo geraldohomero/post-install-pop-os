@@ -12,6 +12,7 @@ CUSTOM_ALIASES=(
   'alias mysqlstart="sudo systemctl start mysql"'
   'alias mysqlstop="sudo systemctl stop mysql"'
 )
+
 # Check if the script is run as root
 if [[ $EUID -eq 0 ]]; then
   echo "This script should not be run as root."
