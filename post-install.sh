@@ -42,6 +42,7 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   com.github.tchx84.Flatseal
   io.missioncenter.MissionCenter
   com.github.tenderowl.frog
+  com.usebottles.bottles
 )
 
 #--------------Validations-------------#
