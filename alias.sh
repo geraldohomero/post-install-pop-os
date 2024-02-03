@@ -11,6 +11,7 @@ CUSTOM_ALIASES=(
   'alias mysqlstatus="sudo systemctl status mysql"'
   'alias mysqlstart="sudo systemctl start mysql"'
   'alias mysqlstop="sudo systemctl stop mysql"'
+  'alias update="./update.sh"'
 )
 
 # Check if the script is run as root
