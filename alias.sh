@@ -1,4 +1,11 @@
 #!/bin/bash
+#####################################################################################
+## This script adds custom aliases defined in the CUSTOM_ALIASES array to          ##
+## the .bash_aliases file in the user's home directory, ensuring convenient        ##
+## access to frequently used commands. Additionally, it includes a safety check to ## 
+## prevent execution as root, mitigating accidental modification of system files.  ##
+#####################################################################################
+
 # Your custom aliases
 CUSTOM_ALIASES=(
   'alias ips="ip -c -br a"'
