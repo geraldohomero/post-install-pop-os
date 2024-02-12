@@ -5,13 +5,14 @@ CUSTOM_ALIASES=(
   'alias his="history|grep"'
   'alias ports="netstat -tulanp"'
   'alias update="./update.sh"'
+  'alias upd="./update.sh"'
   'alias plexstatus="sudo service plexmediaserver status"'
   'alias plexstart="sudo service plexmediaserver start"'
   'alias plexstop="sudo service plexmediaserver stop"'
   'alias mysqlstatus="sudo systemctl status mysql"'
   'alias mysqlstart="sudo systemctl start mysql"'
   'alias mysqlstop="sudo systemctl stop mysql"'
-  'alias update="./update.sh"'
+  'alias syncstatus="./syncthingStatus.sh"'
 )
 
 # Check if the script is run as root
