@@ -54,6 +54,8 @@ CUSTOM_ALIASES=(
     .
 )
 ```
+7. This script also adds update.sh and syncthingStatus.sh to the home directory with execution permissions so that their aliases can work as intended. See it in `run.sh` for more information.
+
 ```bash
 cd Downloads/
 git clone https://github.com/geraldohomero/post-install-pop-os.git
