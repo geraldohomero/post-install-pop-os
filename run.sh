@@ -23,15 +23,20 @@ sleep 2
 
 echo -e "${VERDE}[INFO] - Setup completed successfully.${SEM_COR}"
 
-## Add update.sh to home directory
-echo -e "${VERDE}[INFO] - Adding update.sh to home directory.${SEM_COR}"
+############################################################
+## Add update.sh and syncthingStatus.sh to home directory ##
+############################################################
+echo -e "${VERDE}[INFO] - Adding update.sh and syncthingStatus.sh to home directory.${SEM_COR}"
 sleep 2
-# Copy the update.sh script to the home directory
+# Copy the update.sh and syncthingStatus.sh script to the home directory
 cp update.sh $HOME
+cp syncthingStatus.sh $HOME
 
-echo -e "${VERDE}[INFO] - Making the update.sh script executable.${SEM_COR}"
+echo -e "${VERDE}[INFO] - Making the update.sh and syncthingStatus.sh script executable.${SEM_COR}"
 sleep 2
-# Make the update.sh script executable
+# Make the update.sh and syncthingStatus.sh script executable
 chmod +x $HOME/update.sh
+chmod +x $HOME/syncthingStatus.sh
 
 echo -e "${VERDE}[INFO] - Just type 'update' on the terminal to update/upgrade the system. See /home/.bash_aliases/ for more information.${SEM_COR}"
+echo -e "${VERDE}[INFO] - Just type 'syncstatus' on the terminal to check Syncthing status.${SEM_COR}"
