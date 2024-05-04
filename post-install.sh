@@ -17,6 +17,7 @@ PROGRAMS_TO_INSTALL_APT=(
   openjdk-8-jre
   libreoffice-java-common
   virtualbox
+  gnome-tweaks
   hugo
   vim
   neovim
@@ -25,24 +26,25 @@ PROGRAMS_TO_INSTALL_APT=(
   code
 )
 PROGRAMS_TO_INSTALL_FLATPAK=(
-  com.bitwarden.desktop
+  org.qbittorrent.qBittorrent
   org.kde.okular
-  com.brave.Browser
   org.zotero.Zotero
+  org.standardnotes.standardnotes  
+  org.gnome.Characters
+  com.bitwarden.desktop
+  com.brave.Browser
   com.heroicgameslauncher.hgl
-  io.gitlab.librewolf-community
   com.microsoft.Edge
   com.spotify.Client
   com.axosoft.GitKraken
-  com.stremio.Stremio
-  com.simplenote.Simplenote
-  md.obsidian.Obsidian 
-  org.gnome.Characters
-  org.qbittorrent.qBittorrent
   com.github.tchx84.Flatseal
-  io.missioncenter.MissionCenter
   com.github.tenderowl.frog
   com.usebottles.bottles
+  com.spotify.Client
+  md.obsidian.Obsidian 
+  io.gitlab.librewolf-community
+  io.missioncenter.MissionCenter
+  rest.insomnia.Insomnia
 )
 
 #--------------Validations-------------#
