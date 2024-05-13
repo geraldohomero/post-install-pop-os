@@ -17,6 +17,7 @@ PROGRAMS_TO_INSTALL_APT=(
   openjdk-8-jre
   libreoffice-java-common
   virtualbox
+  docker.io
   gnome-tweaks
   hugo
   vim
