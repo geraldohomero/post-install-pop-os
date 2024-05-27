@@ -137,24 +137,34 @@ download_deb_packages () {
   done
 }
 
-
-install_surfshark () {
-  echo -e "${GREEN}[INFO] - Downloading the Surfshark VPN installation script...${NO_COLOR}"
-  curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh
-
-  echo -e "${GREEN}[INFO] - Downloaded installation script. Displaying the script contents:${NO_COLOR}"
-  cat surfshark-install.sh
-
-  echo -e "${GREEN}[INFO] - Running the Surfshark VPN installation script...${NO_COLOR}"
-  sh surfshark-install.sh
-
-  # Check if the installation was successful
-  if dpkg -l | grep -q "surfshark"; then
-    echo -e "${GREEN}[INFO] - Surfshark VPN has been successfully installed.${NO_COLOR}"
-  else
-    echo -e "${RED}[ERROR] - An error occurred during the installation of Surfshark VPN.${NO_COLOR}"
-  fi
+install_protonvpn() {
+#############################################################
+## Download instructions from:                             ##
+## https://protonvpn.com/support/official-ubuntu-vpn-setup/##
+#############################################################
+  echo -e "${GREEN}[INFO] - Downloading and cheking the Proton VPN...${NO_COLOR}"
+  wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
+  sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
+  echo "de7ef83a663049b5244736d3eabaacec003eb294a4d6024a8fbe0394f22cc4e5  protonvpn-stable-release_1.0.3-3_all.deb" | sha256sum --check -
+  sudo apt update && sudo apt upgrade
+  sudo apt install proton-vpn-gnome-desktop
+  sudo apt update && sudo apt upgrade
 }
+
+# install_surfshark () {
+#  echo -e "${GREEN}[INFO] - Downloading the Surfshark VPN installation script...${NO_COLOR}"
+#  curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh
+#  echo -e "${GREEN}[INFO] - Downloaded installation script. Displaying the script contents:${NO_COLOR}"
+#  cat surfshark-install.sh
+#  echo -e "${GREEN}[INFO] - Running the Surfshark VPN installation script...${NO_COLOR}"
+#  sh surfshark-install.sh
+#  Check if the installation was successful
+#  if dpkg -l | grep -q "surfshark"; then
+#  echo -e "${GREEN}[INFO] - Surfshark VPN has been successfully installed.${NO_COLOR}"
+#  else
+#    echo -e "${RED}[ERROR] - An error occurred during the installation of Surfshark VPN.${NO_COLOR}"
+#  fi
+#}
 
 install_syncthing () {
   # Add the release PGP keys
@@ -180,6 +190,7 @@ install_apt_packages
 update_repositories
 install_flatpak
 download_deb_packages
-install_surfshark
+#install_surfshark
+install_protonvpn
 install_syncthing
 upgrade_cleanup
