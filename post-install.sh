@@ -41,6 +41,7 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   com.axosoft.GitKraken
   com.github.tchx84.Flatseal
   com.github.tenderowl.frog
+  com.google.AndroidStudio
   com.usebottles.bottles
   com.spotify.Client
   md.obsidian.Obsidian 
