@@ -22,6 +22,7 @@ PROGRAMS_TO_INSTALL_APT=(
   hugo
   vim
   neovim
+  gufw 
   git
   steam
   code
