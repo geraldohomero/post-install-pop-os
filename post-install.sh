@@ -151,6 +151,8 @@ install_protonvpn() {
   sudo apt update && sudo apt upgrade
   sudo apt install proton-vpn-gnome-desktop
   sudo apt update && sudo apt upgrade
+  echo -e "${GREEN}[INFO] - Downloading dependecies for tray icons on Ubuntu and Pop!_OS...${NO_COLOR}"
+  sudo apt install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator -y
 }
 
 # install_surfshark () {
