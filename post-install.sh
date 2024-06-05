@@ -17,13 +17,13 @@ PROGRAMS_TO_INSTALL_APT=(
   openjdk-8-jre
   libreoffice-java-common
   virtualbox
-  docker.io
   gnome-tweaks
   hugo
   vim
   neovim
   gufw 
   git
+  gh
   steam
   code
 )
@@ -112,8 +112,8 @@ install_flatpak () {
   fi
   # Install flatpak
   for program in ${PROGRAMS_TO_INSTALL_FLATPAK[@]}; do
-    if ! flatpak list | grep -q $programa; then
-      echo -e "${GREEN}[INFO] - Installing $programa...${NO_COLOR}"
+    if ! flatpak list | grep -q $program; then
+          echo -e "${GREEN}[INFO] - Installing $program...${NO_COLOR}"
       flatpak install flathub $program -y
     else
       echo -e "${GREEN}[INFO] - $program flatpak is already installed.${NO_COLOR}"
@@ -140,10 +140,10 @@ download_deb_packages () {
 }
 
 install_protonvpn() {
-#############################################################
-## Download instructions from:                             ##
-## https://protonvpn.com/support/official-ubuntu-vpn-setup/##
-#############################################################
+##############################################################
+## Download instructions from:                              ##
+## https://protonvpn.com/support/official-ubuntu-vpn-setup/ ##
+##############################################################
   echo -e "${GREEN}[INFO] - Downloading and cheking the Proton VPN...${NO_COLOR}"
   wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
   sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
@@ -189,6 +189,31 @@ install_syncthing () {
   echo -e "${GREEN}[INFO] - Syncthing installation completed successfully.${NO_COLOR}"
 }
 
+install_mscorefonts () {
+  echo -e "${GREEN}[INFO] - Installing Microsoft Core Fonts... Wait for EULA agreement.${NO_COLOR}"
+  sudo apt install ttf-mscorefonts-installer -y
+}
+
+# Android Studio
+add_android_sdk () {
+echo -e "${GREEN}[INFO] - Adding Android SDK to the PATH...${NO_COLOR}"
+echo 'export ANDROID_HOME=$HOME/Android/Sdk' >> ~/.bashrc
+echo 'export PATH=$PATH:$ANDROID_HOME/tools' >> ~/.bashrc
+}
+
+# download_jetbrains_toolbox () {
+#   echo -e "${GREEN}[INFO] - Downloading JetBrains Toolbox...${NO_COLOR}"
+#   wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.3.2.31487.tar.gz -P $HOME/Downloads
+#   ## Extract the downloaded file
+#   echo -e "${GREEN}[INFO] - Extracting the downloaded file...${NO_COLOR}"
+#   tar -xvf $HOME/Downloads/jetbrains-toolbox-2.3.2.31487.tar.gz -C $HOME/Downloads
+#   ## Run the JetBrains Toolbox and making it executable
+#   echo -e "${GREEN}[INFO] - Making JetBrains Toolbox executable...${NO_COLOR}"
+#   chmod +x $HOME/Downloads/jetbrains-toolbox-2.3.2.31487/jetbrains-toolbox
+#   echo -e "${GREEN}[INFO] - Running JetBrains Toolbox...${NO_COLOR}"
+#   $HOME/Downloads/jetbrains-toolbox-2.3.2.31487/jetbrains-toolbox
+# }
+
 #----# Execution #----#
 install_apt_packages
 update_repositories
@@ -198,3 +223,5 @@ download_deb_packages
 install_protonvpn
 install_syncthing
 upgrade_cleanup
+install_mscorefonts
+add_android_sdk

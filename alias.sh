@@ -13,6 +13,7 @@ CUSTOM_ALIASES=(
   'alias ports="netstat -tulanp"'
   'alias update="./update.sh"'
   'alias upd="./update.sh"'
+  'alias up="./update.sh"'
   'alias plexstatus="sudo service plexmediaserver status"'
   'alias plexstart="sudo service plexmediaserver start"'
   'alias plexstop="sudo service plexmediaserver stop"'
@@ -20,6 +21,8 @@ CUSTOM_ALIASES=(
   'alias mysqlstart="sudo systemctl start mysql"'
   'alias mysqlstop="sudo systemctl stop mysql"'
   'alias syncstatus="./syncthingStatus.sh"'
+  'alias neofetch="fastfetch"'
+  'alias fetch="fastfetch"'
 )
 
 # Check if the script is run as root
@@ -29,7 +32,7 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 # add aliases to .bash_aliases file
-add_aliases_to_bashrc() {
+add_aliases() {
   BASH_ALIASES_FILE="$HOME/.bash_aliases"
 
   # Check if .bash_aliases file exists or create it
@@ -52,4 +55,4 @@ add_aliases_to_bashrc() {
 }
 
 # Execute the function to add aliases to .bash_aliases
-add_aliases_to_bashrc
+add_aliases

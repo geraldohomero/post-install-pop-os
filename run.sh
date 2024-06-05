@@ -40,3 +40,25 @@ chmod +x $HOME/syncthingStatus.sh
 
 echo -e "${VERDE}[INFO] - Just type 'update' on the terminal to update/upgrade the system. See /home/.bash_aliases/ for more information.${SEM_COR}"
 echo -e "${VERDE}[INFO] - Just type 'syncstatus' on the terminal to check Syncthing status.${SEM_COR}"
+
+#################################################
+## Clone all repositories from USER on GitHub  ##
+## And verify if GitHub CLI is installed       ##
+#################################################
+echo -e "${VERDE}[INFO] - Checking if GitHub CLI is installed...${SEM_COR}"
+if ! command -v gh &> /dev/null; then
+  echo -e "${VERMELHO}[ERROR] - GitHub CLI is not installed.${SEM_COR}"
+  echo -e "${VERDE}[INFO] - Installing GitHub CLI...${SEM_COR}"
+  sudo apt install gh
+  echo -e "${VERDE}[INFO] - GitHub CLI has been successfully installed.${SEM_COR}"
+else
+  echo -e "${VERDE}[INFO] - GitHub CLI is already installed.${SEM_COR}"
+fi
+
+sleep 2
+
+USER="geraldohomero" # Change to your GitHub username
+DIRECTORY_PATH="$HOME/Documents/Github" # Change to the directory where you want to clone the repositories
+
+echo -e "${VERDE}[INFO] - Cloning all repositories from $USER on GitHub to $DIRECTORY_PATH.${SEM_COR}"
+gh repo list $USER --limit 1000 | while read -r repo _; do gh repo clone "$repo" "$DIRECTORY_PATH/$repo"; done
