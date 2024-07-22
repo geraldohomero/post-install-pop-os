@@ -15,6 +15,7 @@ PROGRAMS_TO_INSTALL_DEB=(
 PROGRAMS_TO_INSTALL_APT=(
   btop
   openjdk-8-jre
+  obs-studio
   libreoffice-java-common
   virtualbox
   gnome-tweaks
