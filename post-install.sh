@@ -26,6 +26,7 @@ PROGRAMS_TO_INSTALL_APT=(
   gh
   steam
   code
+  #yt-dlp
 )
 PROGRAMS_TO_INSTALL_FLATPAK=(
   org.qbittorrent.qBittorrent
@@ -33,6 +34,7 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   org.zotero.Zotero
   org.standardnotes.standardnotes  
   org.gnome.Characters
+  org.gnome.World.PikaBackup
   com.bitwarden.desktop
   com.brave.Browser
   com.heroicgameslauncher.hgl
@@ -44,7 +46,8 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   com.google.AndroidStudio
   com.usebottles.bottles
   com.spotify.Client
-  md.obsidian.Obsidian 
+  md.obsidian.Obsidian
+  nl.hjdskes.gcolor3
   io.gitlab.librewolf-community
   io.missioncenter.MissionCenter
   rest.insomnia.Insomnia
