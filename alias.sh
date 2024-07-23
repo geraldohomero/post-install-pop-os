@@ -23,6 +23,7 @@ CUSTOM_ALIASES=(
   'alias syncstatus="./syncthingStatus.sh"'
   'alias neofetch="fastfetch"'
   'alias fetch="fastfetch"'
+  'alias swap="./swapAudio.sh"'
 )
 
 # Check if the script is run as root

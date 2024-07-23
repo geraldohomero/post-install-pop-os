@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
-RED='\e[1;91m'
-GREEN='\e[1;92m'
-NO_COLOR='\e[0m'
 #-----------https://github.com/geraldohomero/-------------#
 #----------https://geraldohomero.github.io/---------------#
 #------------A personal script project-------------------#
+
+RED='\e[1;91m'
+GREEN='\e[1;92m'
+BLUE='\e[1;94m'
+ORANGE='\e[1;93m'
+NO_COLOR='\e[0m'
 
 DOWNLOAD_PROGRAMS_DIRECTORY="$HOME/Downloads/Programas"
 PROGRAMS_TO_INSTALL_DEB=(
@@ -70,7 +73,7 @@ if [[ ! -x $(which wget) ]]; then
   echo -e "${GREEN}[INFO] - Installing wget...${NO_COLOR}"
   sudo apt install wget -y &> /dev/null
 else
-  echo -e "${GREEN}[INFO] - The wget program is already installed.${NO_COLOR}"
+  echo -e "${ORANGE}[INFO] - The wget program is already installed.${NO_COLOR}"
 fi
 
 # Updates and upgrades #
@@ -96,7 +99,7 @@ install_apt_packages() {
       echo -e "${GREEN}[INFO] - Installing $program...${NO_COLOR}"
       sudo apt install $program -y &> /dev/null
     else
-      echo -e "${GREEN}[INFO] - The package $program is already installed.${NO_COLOR}"
+      echo -e "${ORANGE}[INFO] - The package $program is already installed.${NO_COLOR}"
     fi
   done
 }
@@ -112,7 +115,7 @@ install_flatpak () {
     echo -e "${GREEN}[INFO] - Adding Flathub repository...${NO_COLOR}"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   else
-    echo -e "${GREEN}[INFO] - Flathub repository is already added.${NO_COLOR}"
+    echo -e "${ORANGE}[INFO] - Flathub repository is already added.${NO_COLOR}"
   fi
   # Install flatpak
   for program in ${PROGRAMS_TO_INSTALL_FLATPAK[@]}; do
@@ -120,7 +123,7 @@ install_flatpak () {
           echo -e "${GREEN}[INFO] - Installing $program...${NO_COLOR}"
       flatpak install flathub $program -y
     else
-      echo -e "${GREEN}[INFO] - $program flatpak is already installed.${NO_COLOR}"
+      echo -e "${ORANGE}[INFO] - $program flatpak is already installed.${NO_COLOR}"
     fi
   done
 }
@@ -194,7 +197,7 @@ install_syncthing () {
 }
 
 install_mscorefonts () {
-  echo -e "${GREEN}[INFO] - Installing Microsoft Core Fonts... Wait for EULA agreement.${NO_COLOR}"
+  echo -e "${BLUE}[INFO] - Installing Microsoft Core Fonts... Wait for EULA agreement.${NO_COLOR}"
   sudo apt install ttf-mscorefonts-installer -y
 }
 
