@@ -13,16 +13,15 @@ Post-installation script for the `Pop!_OS` distribution, based on Ubuntu. The sc
 Download the entire "post-install-pop-os" folder containing the script files to your preferred location. You can clone (to the **Downloads** folder) the repository using Git or download it as a ZIP file from the repository's webpage.
 
 At the terminal, run:
+
 ```bash
-cd Downloads/
-git clone https://github.com/geraldohomero/post-install-pop-os.git
-cd post-install-pop-os/
+git clone https://github.com/geraldohomero/post-install-pop-os.git $HOME/Downloads
 ```
 
 2. Make the Scripts Executable:
 
 ```bash
-chmod +x run.sh
+chmod +x $HOME/Downloads/post-install-pop-os/run.sh
 ```
 
 3. Run the Post-Install Setup Script:
@@ -30,7 +29,15 @@ chmod +x run.sh
 Execute the `run.sh` script to start the post-installation process. The script will automatically run and make executable the `post-install.sh` script and then the `alias.sh` script, installing necessary packages and setting up custom aliases.
 
 ```bash
-./run.sh
+$HOME/Downloads/post-install-pop-os/run.sh
+```
+
+Or just copy and paste the following command in the terminal:
+
+```bash
+git clone https://github.com/geraldohomero/post-install-pop-os.git $HOME/Downloads
+chmod +x $HOME/Downloads/post-install-pop-os/run.sh
+$HOME/Downloads/post-install-pop-os/run.sh
 ```
 
 4. Follow On-Screen Instructions:
@@ -55,9 +62,5 @@ CUSTOM_ALIASES=(
 ```
 7. This script also adds `update.sh` and `syncthingStatus.sh` to the home directory with execution permissions so that their aliases can work as intended. See it in `run.sh` for more information.
 
-```bash
-cd Downloads/
-git clone https://github.com/geraldohomero/post-install-pop-os.git
-cd post-install-pop-os/
-chmod +x run.sh
-```
+8. The script will add the `swapAudio.sh` script to the home directory with execution permissions so that its alias can work as intended. See it in `run.sh` and `/misc/swapAudio.sh` for more information.
+

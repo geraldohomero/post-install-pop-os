@@ -1,6 +1,5 @@
-####################
-## For PulseAudio ##
-####################
+# Swap audio channels of the default audio output
+# https://superuser.com/questions/59481/
 
 pactl load-module module-remap-sink \
     sink_name=reverse-stereo \
