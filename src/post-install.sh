@@ -128,7 +128,6 @@ install_flatpak () {
   done
 }
 
-
 download_deb_packages () {
   # Add the directory for downloads if it does not exist
   [[ ! -d "$DOWNLOAD_PROGRAMS_DIRECTORY" ]] && mkdir "$DOWNLOAD_PROGRAMS_DIRECTORY"
@@ -146,36 +145,20 @@ download_deb_packages () {
   done
 }
 
-#install_protonvpn() {
-##############################################################
-## Download instructions from:                              ##
-## https://protonvpn.com/support/official-ubuntu-vpn-setup/ ##
-##############################################################
-#  echo -e "${GREEN}[INFO] - Downloading and cheking the Proton VPN...${NO_COLOR}"
-#  wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
-#  sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
-#  echo "de7ef83a663049b5244736d3eabaacec003eb294a4d6024a8fbe0394f22cc4e5  protonvpn-stable-release_1.0.3-3_all.deb" | sha256sum --check -
-#  sudo apt update && sudo apt upgrade
-#  sudo apt install proton-vpn-gnome-desktop
-#  sudo apt update && sudo apt upgrade
-#  echo -e "${GREEN}[INFO] - Downloading dependecies for tray icons on Ubuntu and Pop!_OS...${NO_COLOR}"
-#  sudo apt install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator -y
-#}
-
-# install_surfshark () {
-#  echo -e "${GREEN}[INFO] - Downloading the Surfshark VPN installation script...${NO_COLOR}"
-#  curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh
-#  echo -e "${GREEN}[INFO] - Downloaded installation script. Displaying the script contents:${NO_COLOR}"
-#  cat surfshark-install.sh
-#  echo -e "${GREEN}[INFO] - Running the Surfshark VPN installation script...${NO_COLOR}"
-#  sh surfshark-install.sh
-#  Check if the installation was successful
-#  if dpkg -l | grep -q "surfshark"; then
-#  echo -e "${GREEN}[INFO] - Surfshark VPN has been successfully installed.${NO_COLOR}"
-#  else
-#    echo -e "${RED}[ERROR] - An error occurred during the installation of Surfshark VPN.${NO_COLOR}"
-#  fi
-#}
+ install_surfshark () {
+  echo -e "${GREEN}[INFO] - Downloading the Surfshark VPN installation script...${NO_COLOR}"
+  curl -f https://downloads.surfshark.com/linux/debian-install.sh --output surfshark-install.sh
+  echo -e "${GREEN}[INFO] - Downloaded installation script. Displaying the script contents:${NO_COLOR}"
+  cat surfshark-install.sh
+  echo -e "${GREEN}[INFO] - Running the Surfshark VPN installation script...${NO_COLOR}"
+  sh surfshark-install.sh
+  Check if the installation was successful
+  if dpkg -l | grep -q "surfshark"; then
+  echo -e "${GREEN}[INFO] - Surfshark VPN has been successfully installed.${NO_COLOR}"
+  else
+    echo -e "${RED}[ERROR] - An error occurred during the installation of Surfshark VPN.${NO_COLOR}"
+  fi
+}
 
 install_syncthing () {
   # Add the release PGP keys
@@ -210,23 +193,39 @@ echo 'export PATH=$PATH:$ANDROID_HOME/tools' >> ~/.bashrc
 
 # download_jetbrains_toolbox () {
 #   echo -e "${GREEN}[INFO] - Downloading JetBrains Toolbox...${NO_COLOR}"
-#   wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.3.2.31487.tar.gz -P $HOME/Downloads
+#   wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.4.1.32573.tar.gz -P $HOME/Downloads
 #   ## Extract the downloaded file
 #   echo -e "${GREEN}[INFO] - Extracting the downloaded file...${NO_COLOR}"
-#   tar -xvf $HOME/Downloads/jetbrains-toolbox-2.3.2.31487.tar.gz -C $HOME/Downloads
+#   tar -xvf $HOME/Downloads/jetbrains-toolbox-2.4.1.32573.tar.gz -C $HOME/Downloads
 #   ## Run the JetBrains Toolbox and making it executable
 #   echo -e "${GREEN}[INFO] - Making JetBrains Toolbox executable...${NO_COLOR}"
-#   chmod +x $HOME/Downloads/jetbrains-toolbox-2.3.2.31487/jetbrains-toolbox
+#   chmod +x $HOME/Downloads/jetbrains-toolbox-2.4.1.32573/jetbrains-toolbox
 #   echo -e "${GREEN}[INFO] - Running JetBrains Toolbox...${NO_COLOR}"
-#   $HOME/Downloads/jetbrains-toolbox-2.3.2.31487/jetbrains-toolbox
+#   $HOME/Downloads/jetbrains-toolbox-2.4.1.32573/jetbrains-toolbox
 # }
+
+#install_protonvpn() {
+##############################################################
+## Download instructions from:                              ##
+## https://protonvpn.com/support/official-ubuntu-vpn-setup/ ##
+##############################################################
+#  echo -e "${GREEN}[INFO] - Downloading and cheking the Proton VPN...${NO_COLOR}"
+#  wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
+#  sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
+#  echo "de7ef83a663049b5244736d3eabaacec003eb294a4d6024a8fbe0394f22cc4e5  protonvpn-stable-release_1.0.3-3_all.deb" | sha256sum --check -
+#  sudo apt update && sudo apt upgrade
+#  sudo apt install proton-vpn-gnome-desktop
+#  sudo apt update && sudo apt upgrade
+#  echo -e "${GREEN}[INFO] - Downloading dependecies for tray icons on Ubuntu and Pop!_OS...${NO_COLOR}"
+#  sudo apt install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator -y
+#}
 
 #----# Execution #----#
 install_apt_packages
 update_repositories
 install_flatpak
 download_deb_packages
-#install_surfshark
+install_surfshark
 #install_protonvpn
 install_syncthing
 upgrade_cleanup
