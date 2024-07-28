@@ -35,7 +35,7 @@ $HOME/Downloads/post-install-pop-os/run.sh
 Or just copy and paste the following command in the terminal:
 
 ```bash
-git clone https://github.com/geraldohomero/post-install-pop-os.git $HOME/Downloads
+git clone https://github.com/geraldohomero/post-install-pop-os.git $HOME/Downloads/post-install-pop-os
 chmod +x $HOME/Downloads/post-install-pop-os/run.sh
 $HOME/Downloads/post-install-pop-os/run.sh
 ```
