@@ -54,7 +54,7 @@ You can modify or add your own custom aliases in the `alias.sh` script to suit y
 
 ```bash
 CUSTOM_ALIASES=(
-    'alias <aliasName>="<what it does">'
+    'alias <aliasName>="<what it does>"'
     .
     .
     .

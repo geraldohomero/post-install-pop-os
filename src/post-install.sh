@@ -30,7 +30,7 @@ PROGRAMS_TO_INSTALL_APT=(
   gh
   steam
   code
-  #yt-dlp
+  yt-dlp
 )
 PROGRAMS_TO_INSTALL_FLATPAK=(
   org.qbittorrent.qBittorrent
@@ -146,21 +146,21 @@ download_deb_packages () {
   done
 }
 
-install_protonvpn() {
+#install_protonvpn() {
 ##############################################################
 ## Download instructions from:                              ##
 ## https://protonvpn.com/support/official-ubuntu-vpn-setup/ ##
 ##############################################################
-  echo -e "${GREEN}[INFO] - Downloading and cheking the Proton VPN...${NO_COLOR}"
-  wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
-  sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
-  echo "de7ef83a663049b5244736d3eabaacec003eb294a4d6024a8fbe0394f22cc4e5  protonvpn-stable-release_1.0.3-3_all.deb" | sha256sum --check -
-  sudo apt update && sudo apt upgrade
-  sudo apt install proton-vpn-gnome-desktop
-  sudo apt update && sudo apt upgrade
-  echo -e "${GREEN}[INFO] - Downloading dependecies for tray icons on Ubuntu and Pop!_OS...${NO_COLOR}"
-  sudo apt install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator -y
-}
+#  echo -e "${GREEN}[INFO] - Downloading and cheking the Proton VPN...${NO_COLOR}"
+#  wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
+#  sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb && sudo apt update
+#  echo "de7ef83a663049b5244736d3eabaacec003eb294a4d6024a8fbe0394f22cc4e5  protonvpn-stable-release_1.0.3-3_all.deb" | sha256sum --check -
+#  sudo apt update && sudo apt upgrade
+#  sudo apt install proton-vpn-gnome-desktop
+#  sudo apt update && sudo apt upgrade
+#  echo -e "${GREEN}[INFO] - Downloading dependecies for tray icons on Ubuntu and Pop!_OS...${NO_COLOR}"
+#  sudo apt install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1 gnome-shell-extension-appindicator -y
+#}
 
 # install_surfshark () {
 #  echo -e "${GREEN}[INFO] - Downloading the Surfshark VPN installation script...${NO_COLOR}"
@@ -227,7 +227,7 @@ update_repositories
 install_flatpak
 download_deb_packages
 #install_surfshark
-install_protonvpn
+#install_protonvpn
 install_syncthing
 upgrade_cleanup
 install_mscorefonts
