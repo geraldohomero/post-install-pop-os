@@ -14,14 +14,11 @@ echo -e "${GREEN}[INFO] - Checking if GitHub CLI is installed...${NO_COLOR}"
 if ! command -v gh &> /dev/null; then
   echo -e "${RED}[ERROR] - GitHub CLI is not installed.${NO_COLOR}"
   echo -e "${GREEN}[INFO] - Installing GitHub CLI...${NO_COLOR}"
-
   sudo apt install gh
-
   echo -e "${GREEN}[INFO] - GitHub CLI has been successfully installed.${NO_COLOR}"
 else
   echo -e "${ORANGE}[INFO] - GitHub CLI is already installed.${NO_COLOR}"
 fi
-
 sleep 2
 
 # Clone all repositories from USER on GitHub
@@ -29,7 +26,12 @@ echo -e "${GREEN}[INFO] - Enter the GitHub ${RED}username ${GREEN}to clone the r
 echo -n "GitHub username: "
 read USER
 
-DIRECTORY_PATH="$HOME/Documents/Github" # Change to the directory where you want to clone the repositories
+##########################################
+# Change to the directory where you want # 
+# to clone all the repositories          #
+##########################################
+DIRECTORY_PATH="$HOME/Documents/Github"  #
+##########################################
 
 echo -e "${GREEN}[INFO] - Cloning all repositories from $USER on GitHub to $DIRECTORY_PATH.${NO_COLOR}"
 gh repo list $USER --limit 1000 | while read -r repo _; do gh repo clone "$repo" "$DIRECTORY_PATH/$repo"; done
