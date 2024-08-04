@@ -32,7 +32,7 @@ Execute the `run.sh` script to start the post-installation process. The script w
 $HOME/Downloads/post-install-pop-os/run.sh
 ```
 
-Or just copy and paste the following command in the terminal:
+**Or just copy and paste the following command in the terminal:**
 
 ```bash
 git clone https://github.com/geraldohomero/post-install-pop-os.git $HOME/Downloads/post-install-pop-os
@@ -50,7 +50,7 @@ After the setup is completed, you can review the installed software and aliases 
 
 6. Customize Aliases and Installed programs (Optional):
 
-You can modify or add your own custom aliases in the `alias.sh` script to suit your workflow. Edit the CUSTOM_ALIASES array with the desired aliases, and run the `alias.sh` script again to update your .bash_aliases file. The same principle is valid for the `post-install.sh` and the arrays of the `flatpak` and `apt`. 
+You can modify or add your own custom aliases in the `src/alias.sh` script to suit your workflow. Edit the CUSTOM_ALIASES array with the desired aliases, and run the `alias.sh` script again to update your .bash_aliases file. The same principle is valid for the `src/post-install.sh` and the arrays of the `flatpak` and `apt`. 
 
 ```bash
 CUSTOM_ALIASES=(
@@ -60,7 +60,10 @@ CUSTOM_ALIASES=(
     .
 )
 ```
+
 7. This script also adds `update.sh` and `syncthingStatus.sh` to the home directory with execution permissions so that their aliases can work as intended. See it in `run.sh` for more information.
 
 8. The script will add the `swapAudio.sh` script to the home directory with execution permissions so that its alias can work as intended. See it in `run.sh` and `/misc/swapAudio.sh` for more information.
+
+9. On `src/githubClone.sh` script, you can clone all repositories from a specific user. You will be `prompted` to `enter the username` and the script will clone all repositories from that user. `You also need to change the directory to the desired location`. The default is `DIRECTORY_PATH="$HOME/Documents/Github"`. 
 
