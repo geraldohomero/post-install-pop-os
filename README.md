@@ -1,4 +1,6 @@
-# Post Install script for Pop!_OS (22.04) [24.04 TBA](https://github.com/geraldohomero/post-install-pop-os/issues/44)
+# Post Install script for Pop!_OS (22.04) 
+
+>[24.04 TBA](https://github.com/geraldohomero/post-install-pop-os/issues/44)
 
 Post-installation script for the `Pop!_OS` distribution, based on Ubuntu. The script contains internet verification and whether `wget` is installed on the device. Also, install `apt`, `flatpak` and `deb` packages; updates repositories and performs system cleanup.
 
