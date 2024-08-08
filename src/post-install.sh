@@ -11,8 +11,7 @@ NO_COLOR='\e[0m'
 
 DOWNLOAD_PROGRAMS_DIRECTORY="$HOME/Downloads/Programas"
 PROGRAMS_TO_INSTALL_DEB=(
-  https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
-  https://mega.nz/linux/repo/xUbuntu_22.04/amd64/nautilus-megasync-xUbuntu_22.04_amd64.deb
+  https://mega.nz/linux/repo/xUbuntu_24.04/amd64/megasync-xUbuntu_24.04_amd64.deb
   https://github.com/fastfetch-cli/fastfetch/releases/download/2.11.2/fastfetch-linux-amd64.deb
 )
 PROGRAMS_TO_INSTALL_APT=(
@@ -21,7 +20,6 @@ PROGRAMS_TO_INSTALL_APT=(
   obs-studio
   libreoffice-java-common
   virtualbox
-  gnome-tweaks
   hugo
   vim
   neovim
