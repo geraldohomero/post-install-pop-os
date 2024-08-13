@@ -112,6 +112,8 @@ update_repositories() {
 install_flatpak () {
   # Add Flathub repository
   if ! flatpak remote-list | grep -q "flathub"; then
+    echo -e "${GREEN}[INFO] - Installing Flathub...${NO_COLOR}"
+    sudo apt install flatpak -y &> /dev/null
     echo -e "${GREEN}[INFO] - Adding Flathub repository...${NO_COLOR}"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   else
