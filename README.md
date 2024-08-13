@@ -6,7 +6,9 @@ Post-installation script for the `Pop!_OS` distribution, based on Ubuntu. The sc
 
 ***
 
->**Note**: The script was designed for **Pop!_OS 22.04 (LTS)**, but it may also work on other Debian/Ubuntu-based distributions. However, please be cautious and ensure compatibility before running it on other systems.
+>**Note**: The script was designed for `Pop!_OS 22.04 (LTS)`, but it may also work on other `Debian-based` distributions. However, please be cautious and ensure compatibility before running it on other systems.
+
+> Testing on Ubuntu 24.04 LTS was successful. See [Issue 61](https://github.com/geraldohomero/post-install-pop-os/issues/61)
 
 >**Important**: While the script aims to automate setup tasks, it's essential to review the code and understand what it does before running it on your machine. **Ensure that you back up critical data before proceeding**. The script provided is for **educational purposes** and comes with **no warranty or support**.
 
