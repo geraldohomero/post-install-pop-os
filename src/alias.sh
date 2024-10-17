@@ -24,6 +24,7 @@ CUSTOM_ALIASES=(
   'alias neofetch="fastfetch"'
   'alias fetch="fastfetch"'
   'alias swap="./swapAudio.sh"'
+  'alias anaconda="conda activate && anaconda-navigator"'
 )
 
 # Check if the script is run as root
