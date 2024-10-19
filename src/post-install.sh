@@ -34,7 +34,7 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   org.qbittorrent.qBittorrent
   org.kde.okular
   org.zotero.Zotero
-  org.standardnotes.standardnotes  
+  #org.standardnotes.standardnotes  
   org.gnome.Characters
   org.gnome.World.PikaBackup
   com.bitwarden.desktop
@@ -44,9 +44,10 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   com.spotify.Client
   com.axosoft.GitKraken
   com.github.tchx84.Flatseal
+  it.mijorus.gearlever
   com.github.tenderowl.frog
   com.google.AndroidStudio
-  com.usebottles.bottles
+  #com.usebottles.bottles
   com.spotify.Client
   md.obsidian.Obsidian
   nl.hjdskes.gcolor3
@@ -55,24 +56,31 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   rest.insomnia.Insomnia
 )
 
+# Function to check internet connectivity
+check_internet() {
+  if ! ping -c 1 8.8.8.8 -q &> /dev/null; then
+    echo -e "${RED}[ERROR] - Your computer does not have an Internet connection.${NO_COLOR}"
+    exit 1
+  else
+    echo -e "${GREEN}[INFO] - Internet connection verified.${NO_COLOR}"
+  fi
+}
+
+# Function to check if a program is installed
+check_program_installed() {
+  local program=$1
+  if ! command -v "$program" &> /dev/null; then
+    echo -e "${RED}[ERROR] - The $program program is not installed.${NO_COLOR}"
+    echo -e "${GREEN}[INFO] - Installing $program...${NO_COLOR}"
+    sudo apt install "$program" -y &> /dev/null || { echo -e "${RED}[ERROR] - Failed to install $program.${NO_COLOR}"; exit 1; }
+  else
+    echo -e "${ORANGE}[INFO] - The $program program is already installed.${NO_COLOR}"
+  fi
+}
+
 #--------------Validations-------------#
-# Internet?
-if ! ping -c 1 8.8.8.8 -q &> /dev/null; then
-  echo -e "${RED}[ERROR] - Your computer does not have an Internet connection.${NO_COLOR}"
-  exit 1
-else
-  echo -e "${GREEN}[INFO] - Internet connection verified.${NO_COLOR}"
-fi
-
-
-# Is wget installed? #
-if [[ ! -x $(which wget) ]]; then
-  echo -e "${RED}[ERROR] - The wget program is not installed.${NO_COLOR}"
-  echo -e "${GREEN}[INFO] - Installing wget...${NO_COLOR}"
-  sudo apt install wget -y &> /dev/null
-else
-  echo -e "${ORANGE}[INFO] - The wget program is already installed.${NO_COLOR}"
-fi
+check_internet
+check_program_installed wget
 
 # Updates and upgrades #
 upgrade_cleanup () {
@@ -93,9 +101,9 @@ upgrade_cleanup () {
 # Installing packages and programs #
 install_apt_packages() {
   for program in ${PROGRAMS_TO_INSTALL_APT[@]}; do
-    if ! dpkg -l | grep -q $program; then
+    if ! dpkg -l | grep -q "$program"; then
       echo -e "${GREEN}[INFO] - Installing $program...${NO_COLOR}"
-      sudo apt install $program -y &> /dev/null
+      sudo apt install "$program" -y &> /dev/null || { echo -e "${RED}[ERROR] - Failed to install $program.${NO_COLOR}"; exit 1; }
     else
       echo -e "${ORANGE}[INFO] - The package $program is already installed.${NO_COLOR}"
     fi
@@ -191,19 +199,6 @@ echo 'export ANDROID_HOME=$HOME/Android/Sdk' >> ~/.bashrc
 echo 'export PATH=$PATH:$ANDROID_HOME/tools' >> ~/.bashrc
 }
 
-# download_jetbrains_toolbox () {
-#   echo -e "${GREEN}[INFO] - Downloading JetBrains Toolbox...${NO_COLOR}"
-#   wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.4.1.32573.tar.gz -P $HOME/Downloads
-#   ## Extract the downloaded file
-#   echo -e "${GREEN}[INFO] - Extracting the downloaded file...${NO_COLOR}"
-#   tar -xvf $HOME/Downloads/jetbrains-toolbox-2.4.1.32573.tar.gz -C $HOME/Downloads
-#   ## Run the JetBrains Toolbox and making it executable
-#   echo -e "${GREEN}[INFO] - Making JetBrains Toolbox executable...${NO_COLOR}"
-#   chmod +x $HOME/Downloads/jetbrains-toolbox-2.4.1.32573/jetbrains-toolbox
-#   echo -e "${GREEN}[INFO] - Running JetBrains Toolbox...${NO_COLOR}"
-#   $HOME/Downloads/jetbrains-toolbox-2.4.1.32573/jetbrains-toolbox
-# }
-
 #install_protonvpn() {
 ##############################################################
 ## Download instructions from:                              ##
@@ -222,12 +217,11 @@ echo 'export PATH=$PATH:$ANDROID_HOME/tools' >> ~/.bashrc
 
 #----# Execution #----#
 install_apt_packages
-update_repositories
+upgrade_cleanup
 install_flatpak
 download_deb_packages
 install_surfshark
 #install_protonvpn
 install_syncthing
-upgrade_cleanup
 install_mscorefonts
 add_android_sdk
