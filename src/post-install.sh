@@ -25,6 +25,7 @@ PROGRAMS_TO_INSTALL_APT=(
   neovim
   gufw 
   git
+  font-manager
   gh
   steam
   code
