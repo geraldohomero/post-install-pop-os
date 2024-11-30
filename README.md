@@ -72,4 +72,4 @@ CUSTOM_ALIASES=(
 
 9. On `src/githubClone.sh` script, you can clone all repositories from a specific user. You will be `prompted` to `enter the username` and the script will clone all repositories from that user. `You also need to change the directory to the desired location`. The default is `DIRECTORY_PATH="$HOME/Documents/Github"`. 
 
-[Read the blog post](https://geraldohomero.github.io/posts/1732280795786-post-install-pop-os/)
+[Read the blog post](https://geraldohomero.github.io/posts/1732885121982-post-instal-pop-os/
