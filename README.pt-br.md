@@ -1,6 +1,3 @@
-
-# Pós-Instalação do Pop!_OS (22.04)
-
 > PIPOS
 > [24.04 Em Breve](https://github.com/geraldohomero/post-install-pop-os/issues/44)
 
