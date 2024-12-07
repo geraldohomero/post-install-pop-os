@@ -20,38 +20,29 @@ Baixe toda a pasta "post-install-pop-os" contendo os arquivos de script para o l
 
 No terminal, execute:
 
-bash
-
-Copy
-
-`git clone https://github.com/geraldohomero/post-install-pop-os.git $HOME/Downloads`
+```bash
+git clone https://github.com/geraldohomero/post-install-pop-os.git $HOME/Downloads
+```
 
 ## 2. Torne os Scripts Executáveis
 
-bash
-
-Copy
-
-`chmod +x $HOME/Downloads/post-install-pop-os/run.sh`
+```bash
+chmod +x $HOME/Downloads/post-install-pop-os/run.sh
+```
 
 ## 3. Execute o Script de Configuração Pós-Instalação
 
 Execute o script `run.sh` para iniciar o processo de pós-instalação. O script executará automaticamente e tornará executáveis os scripts `post-install.sh` e `alias.sh`, instalando pacotes necessários e configurando aliases personalizados.
 
-bash
-
-Copy
-
-`$HOME/Downloads/post-install-pop-os/run.sh`
+```bash
+$HOME/Downloads/post-install-pop-os/run.sh
+```
 
 **Ou simplesmente copie e cole o seguinte comando no terminal:**
 
-bash
-
-Copy
-
-`git clone https://github.com/geraldohomero/post-install-pop-os.git $HOME/Downloads/post-install-pop-os chmod +x $HOME/Downloads/post-install-pop-os/run.sh $HOME/Downloads/post-install-pop-os/run.sh`
-
+```bash
+git clone https://github.com/geraldohomero/post-install-pop-os.git $HOME/Downloads/post-install-pop-os chmod +x $HOME/Downloads/post-install-pop-os/run.sh $HOME/Downloads/post-install-pop-os/run.sh
+```
 ## 4. Siga as Instruções na Tela
 
 O script de configuração exibirá mensagens coloridas e informativas durante o progresso das etapas de instalação e configuração. Pode ser necessário fornecer sua senha para operações que requerem privilégios administrativos.
@@ -64,12 +55,9 @@ Após a conclusão da configuração, você pode revisar o software e os aliases
 
 Você pode modificar ou adicionar aliases personalizados no script `src/alias.sh` para adequar-se ao seu fluxo de trabalho. Edite o array CUSTOM_ALIASES com os aliases desejados e execute o script `alias.sh` novamente para atualizar seu arquivo .bash_aliases. O mesmo princípio é válido para `src/post-install.sh` e os arrays de `flatpak` e `apt`.
 
-bash
-
-Copy
-
-`CUSTOM_ALIASES=(     'alias <nomeDoAlias>="<o que ele faz>"'    .    .    . )`
-
+```bash
+CUSTOM_ALIASES=(     'alias <nomeDoAlias>="<o que ele faz>"'    .    .    . )
+```
 ## 7. Scripts Adicionais
 
 Este script também adiciona `update.sh` e `syncthingStatus.sh` ao diretório home com permissões de execução para que seus aliases possam funcionar conforme pretendido. Consulte `run.sh` para mais informações.
