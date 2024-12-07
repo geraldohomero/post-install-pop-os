@@ -1,4 +1,5 @@
 > PIPOS
+> 
 > [24.04 Em Breve](https://github.com/geraldohomero/post-install-pop-os/issues/44)
 
 Script de pós-instalação para a distribuição `Pop!_OS`, baseado no Ubuntu. O script contém verificação de internet e se o `wget` está instalado no dispositivo. Além disso, instala pacotes `apt`, `flatpak` e `deb`; atualiza repositórios e realiza limpeza do sistema.
