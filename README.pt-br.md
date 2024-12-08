@@ -54,7 +54,12 @@ Após a conclusão da configuração, você pode revisar o software e os aliases
 Você pode modificar ou adicionar aliases personalizados no script `src/alias.sh` para adequar-se ao seu fluxo de trabalho. Edite o array CUSTOM_ALIASES com os aliases desejados e execute o script `alias.sh` novamente para atualizar seu arquivo .bash_aliases. O mesmo princípio é válido para `src/post-install.sh` e os arrays de `flatpak` e `apt`.
 
 ```bash
-CUSTOM_ALIASES=(     'alias <nomeDoAlias>="<o que ele faz>"'    .    .    . )
+CUSTOM_ALIASES=(
+    'alias <aliasName>="<o que ele faz>"'
+    .
+    .
+    .
+)
 ```
 ## 7. Scripts Adicionais
 
