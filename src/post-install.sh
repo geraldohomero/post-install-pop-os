@@ -17,17 +17,12 @@ PROGRAMS_TO_INSTALL_DEB=(
 PROGRAMS_TO_INSTALL_APT=(
   btop
   openjdk-8-jre
-  obs-studio
   libreoffice-java-common
-  virtualbox
   hugo
-  vim
-  neovim
   gufw 
   git
   font-manager
   gh
-  steam
   code
   yt-dlp
 )
@@ -35,26 +30,27 @@ PROGRAMS_TO_INSTALL_FLATPAK=(
   org.qbittorrent.qBittorrent
   org.kde.okular
   org.zotero.Zotero
-  #org.standardnotes.standardnotes  
   org.gnome.Characters
-  org.gnome.World.PikaBackup
+  org.localsend.localsend_app
+  org.onlyoffice.desktopeditors
+  org.x.Warpinator
+  org.feichtmeier.Musicpod
+  org.rncbc.qpwgraph
   com.bitwarden.desktop
   com.brave.Browser
-  com.heroicgameslauncher.hgl
-  com.microsoft.Edge
-  com.spotify.Client
-  com.axosoft.GitKraken
-  com.github.tchx84.Flatseal
-  it.mijorus.gearlever
+  com.ranfdev.DistroShelf
   com.github.tenderowl.frog
-  com.google.AndroidStudio
-  #com.usebottles.bottles
-  com.spotify.Client
+  com.github.tchx84.Flatseal
+  com.mattjakeman.ExtensionManager
   md.obsidian.Obsidian
+  net.ankiweb.Anki 
+  net.mullvad.MullvadBrowser
+  net.opentabletdriver.OpenTabletDriver
   nl.hjdskes.gcolor3
-  io.gitlab.librewolf-community
+  it.mijorus.gearlever
+  io.github.swordpuffin.wardrobe
   io.missioncenter.MissionCenter
-  rest.insomnia.Insomnia
+  org.sqlitebrowser.sqlitebrowser
 )
 
 # Function to check internet connectivity
@@ -221,7 +217,7 @@ install_apt_packages
 upgrade_cleanup
 install_flatpak
 download_deb_packages
-install_surfshark
+#install_surfshark
 #install_protonvpn
 install_syncthing
 install_mscorefonts

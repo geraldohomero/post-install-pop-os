@@ -10,7 +10,7 @@ NO_COLOR='\e[0m'
 cd "$HOME/Downloads/post-install-pop-os"
 
 # Make the scripts on /src/ executable
-chmod +x ./src/post-install.sh ./src/alias.sh ./src/homeScript.sh ./src/devEnv.sh ./src/githubClone.sh
+chmod +x ./src/*.sh
 
 echo -e "${GREEN}[INFO] - Post-installation script will be executed.${NO_COLOR}"
 sleep 2
@@ -24,6 +24,9 @@ sleep 2
 # Run the .bash_aliases script
 ./src/alias.sh
 
+#install VPN
+./src/vpn.sh
+
 echo -e "${PURPLE}[INFO] - Now some additional steps will be executed.${NO_COLOR}"
 sleep 2
 
@@ -31,7 +34,7 @@ sleep 2
 ./src/homeScript.sh
 
 # Clone all repositories from USER on GitHub  #
-./src/githubClone.sh
+#./src/githubClone.sh
 
 # Add some development tools like node, npm, nvm, dotnet, EntityFramework... 
-./src/devEnv.sh
+#./src/devEnv.sh
