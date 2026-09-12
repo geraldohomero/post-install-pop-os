@@ -22,9 +22,9 @@ upgrade_cleaning () {
   sudo apt full-upgrade
   sudo apt autoremove -y 
   #upgrades, repair and remove unused flatpaks
-  #flatpak repair --user
-  #flatpak remove --unused
   flatpak update
+  flatpak repair --user
+  flatpak uninstall --unused
 }  
 #----# Execução do script
 upgrade_cleaning
